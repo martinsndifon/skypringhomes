@@ -1,0 +1,5 @@
+This file contains all dependencies for the application, make sure to install all
+depencies to avoid errors.
+
+1. pytz
+	`pip install pytz`
