@@ -8,6 +8,8 @@ from flasgger.utils import swag_from
 from models import storage
 from models.rent_type import RentType
 from models.rent import Rent
+import os
+import shutil
 
 
 @app_views.route('/rent', methods=['GET'], strict_slashes=False)
@@ -58,7 +60,7 @@ def get_rent(rent_type):
 @swag_from('documentation/rent/post_rent.yml', methods=['POST'])
 def post_rent():
     """Creates a new rented property in the db"""
-    data = request.json
+    data = request.form
 
     description = data.get('description')
     location = data.get('location')

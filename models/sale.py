@@ -19,5 +19,5 @@ class Sale(BaseModel, Base):
     def __init__(self, *args, **kwargs):
         """initializes common attributes from basemodel"""
         super().__init__(*args, **kwargs)
-        self.image_path = "/home/vagrant/alx/skypringhomes/media_storage/sale/images/" + self.id + "/"
-        self.video_path = "/home/vagrant/alx/skypringhomes/media_storage/sale/videos/" + self.id + "/"
+        self.image_path = "/home/vagrant/alx/skyspringhomes/media_storage/sale/images/" + self.id + "/"
+        self.video_path = "/home/vagrant/alx/skyspringhomes/media_storage/sale/videos/" + self.id + "/"
