@@ -1,0 +1,19 @@
+Updates the Sale property information based on ID
+---
+tags:
+  - Sale
+parameters:
+  - name: sale_id
+    in: path
+    type: string
+    required: true
+    description: the unique id of the sale property
+  - name: request
+    in: body
+    required: true
+
+responses:
+  404:
+    description: property not found
+  200:
+    description: Request executed successfully

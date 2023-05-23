@@ -5,7 +5,7 @@ from datetime import datetime
 import pytz
 from sqlalchemy.orm import declarative_base
 from sqlalchemy import Column, String, DateTime
-#import models
+import models
 
 Base = declarative_base()
 utc_now = datetime.utcnow()
@@ -46,7 +46,7 @@ class BaseModel:
 
     def save(self):
         """save the object in the database"""
-        self.updated_at = utc.now
+        self.updated_at = utc_now
         models.storage.new(self)
         models.storage.save()
 

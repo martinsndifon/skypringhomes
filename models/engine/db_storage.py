@@ -3,15 +3,18 @@
 from models.rent import Rent
 from models.sale import Sale
 from models.serviced import Serviced
+from models.rent_type import RentType
 from models.base_model import BaseModel, Base
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session
 from os import getenv
+import models
 
-models = {
+my_models = {
         'rent': Rent,
         'sale': Sale,
-        'serviced': Serviced
+        'serviced': Serviced,
+        'rent_type': RentType
         }
 
 
@@ -36,7 +39,7 @@ class DBStorage:
         if SKY_ENV == "test":
             Base.metadata.drop_all(self.__engine)
 
-    def all(self, cls=None, type_id=None) -> dict:
+    def all(self, cls=None, rent_type=None) -> dict:
         """Return all objects in the db or all objects for the class passed"""
         objs = {}
         if not cls:
@@ -46,10 +49,10 @@ class DBStorage:
                     key = f'{obj.__class__.__name__}.{obj.id}'
                     objs[key] = obj
             return objs
-        if not type_id:
+        if not rent_type:
             result = self.__session.query(cls).all()
         else:
-            result = self.__session.query(cls).where(cls.type_id == type_id).all()
+            result = self.__session.query(cls).where(cls.rent_type == rent_type).all()
         for obj in result:
             key = f'{obj.__class__.__name__}.{obj.id}'
             objs[key] = obj
@@ -65,7 +68,7 @@ class DBStorage:
         """Return an object given its id and class"""
         if not cls or not id:
             return None
-        obj = self.__session.query(cls).where(cls.id = id).first()
+        obj = self.__session.query(cls).where(cls.id == id).first()
         if not obj:
             return None
         return obj
@@ -96,3 +99,15 @@ class DBStorage:
         """Delete the current object"""
         if obj is not None:
             self.__session.delete(obj)
+
+    def count(self, cls=None):
+        """Returns the number of listings for each listing type"""
+        all_class = my_models.values()
+
+        if not cls:
+            count = 0
+            for clas in all_class:
+                count += len(models.storage.all(clas).values())
+        else:
+            count = len(models.storage.all(cls).values())
+        return count

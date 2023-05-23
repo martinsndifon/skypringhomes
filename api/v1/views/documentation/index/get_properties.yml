@@ -1,0 +1,40 @@
+Gets the list of all properties of all classes sorted by the time they were last updated
+---
+tags:
+  - Properties
+responses:
+  200:
+    description: Successful request
+    schema:
+      type: array
+      items:
+        properties:
+          __class__:
+            type: string
+          id:
+            type: string
+            description: The uuid of the rent instance
+          created_at:
+            type: string
+            description: The time of creation of the instance
+          updated_at:
+            type: string
+            description: The time of last update of the instance
+          rent_type:
+            type: string
+            description: The type of rented property
+          price:
+            type: integer
+            description: The price of the property
+          location:
+            type: string
+            description: The location of the property
+          description:
+            type: string
+            description: The description of the property
+          image_path:
+            type: string
+            description: The path to the where the property images are located in storage
+          video_path:
+            type: string
+            description: The path to where the property videos are located

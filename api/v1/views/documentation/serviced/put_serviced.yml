@@ -1,0 +1,19 @@
+Updates the Serviced property information based on ID
+---
+tags:
+  - Serviced
+parameters:
+  - name: serviced_id
+    in: path
+    type: string
+    required: true
+    description: the unique id of the serviced property
+  - name: request
+    in: body
+    required: true
+
+responses:
+  404:
+    description: serviced property not found
+  200:
+    description: Request executed successfully

@@ -1,0 +1,15 @@
+Deletes a Serviced property based on the id provided
+---
+tags:
+  - Serviced
+parameters:
+  - name: serviced_id
+    in: path
+    type: string
+    required: true
+    description: The uuid of the serviced property to delete
+responses:
+  404:
+    description: property not found!
+  200:
+    description: Deletion request sucessful

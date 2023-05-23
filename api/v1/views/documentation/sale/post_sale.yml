@@ -1,0 +1,25 @@
+Posts a new sale property.
+---
+tags:
+  - Sale
+parameters:
+  - name: request
+    in: body
+    required: true
+    requires:
+     - price
+       location
+       description
+    properties:
+      price:
+        type: integer
+      location:
+        type: string
+      description:
+        type: string
+
+    responses:
+      400:
+        description: Missing price or location
+      201:
+         description: Request completed successfully

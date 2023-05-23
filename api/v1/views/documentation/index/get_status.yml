@@ -1,0 +1,13 @@
+Gets the status of the API service
+---
+tags:
+  - Status
+responses:
+  200:
+    description: Successful request
+    schema:
+      type: object
+      properties:
+        status:
+          type: string
+          example: "Ok"

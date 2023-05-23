@@ -1,0 +1,28 @@
+Posts a new property for rent.
+---
+tags:
+  - Rent
+parameters:
+  - name: request
+    in: body
+    required: true
+    requires:
+     - rent_type
+       price
+       location
+       description
+    properties:
+      rent_type:
+        type: string
+      price:
+        type: integer
+      location:
+        type: string
+      description:
+        type: string
+
+    responses:
+      400:
+        description: Missing rent_type or price or location
+      201:
+         description: Request completed successfully

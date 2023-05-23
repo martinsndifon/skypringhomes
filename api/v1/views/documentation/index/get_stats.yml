@@ -1,0 +1,22 @@
+Gets the statistics of properties available in the database
+---
+tags:
+  - Stats
+responses:
+  200:
+    description: Successful request
+    schema:
+      type: object
+      properties:
+        for_rent:
+          type: integer
+          example: 0
+          description: The number of properties available for rent
+        for_sale:
+          type: integer
+          example: 0
+          description: The number of properties for sale
+        service_apartments:
+          type: integer
+          example: 0
+          description: The number of service apartments available

@@ -1,0 +1,19 @@
+Updates the Rent property information based on ID
+---
+tags:
+  - Rent
+parameters:
+  - name: rent_id
+    in: path
+    type: string
+    required: true
+    description: the unique id of the rented property
+  - name: request
+    in: body
+    required: true
+
+responses:
+  404:
+    description: rent property not found
+  200:
+    description: Request executed successfully

@@ -1,0 +1,15 @@
+Deletes a Sale property based on the id provided
+---
+tags:
+  - Sale
+parameters:
+  - name: sale_id
+    in: path
+    type: string
+    required: true
+    description: The uuid of the sale property to delete
+responses:
+  404:
+    description: property not found!
+  200:
+    description: Deletion request sucessful
