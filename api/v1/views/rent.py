@@ -6,7 +6,6 @@ from datetime import datetime
 from flask import jsonify, make_response, request, abort
 from flasgger.utils import swag_from
 from models import storage
-from models.rent_type import RentType
 from models.rent import Rent
 import os
 import shutil
@@ -100,17 +99,17 @@ def post_rent():
             image.save(os.path.join(prop_dir, filename))
 
     # Access uploaded videos separately
-    if 'videos' in request.files:
-        videos = request.files.getlist('videos')
-        for video in videos:
-            base_dir = f'/home/vagrant/alx/skyspringhomes/media_storage/rent/{rent_type}/videos/'
-            os.makedirs(base_dir, exist_ok=True)
+    # if 'videos' in request.files:
+    #     videos = request.files.getlist('videos')
+    #     for video in videos:
+    #         base_dir = f'/home/vagrant/alx/skyspringhomes/media_storage/rent/{rent_type}/videos/'
+    #         os.makedirs(base_dir, exist_ok=True)
 
-            prop_dir = os.path.join(base_dir, prop_id)
-            os.makedirs(prop_dir, exist_ok=True)
+    #         prop_dir = os.path.join(base_dir, prop_id)
+    #         os.makedirs(prop_dir, exist_ok=True)
 
-            filename = video.filename
-            video.save(os.path.join(prop_dir, filename))
+    #         filename = video.filename
+    #         video.save(os.path.join(prop_dir, filename))
 
     rented_prop.save()
     return make_response(jsonify(rented_prop.to_dict()), 201)
@@ -154,24 +153,24 @@ def put_rent(rent_id):
             filename = image.filename
             image.save(os.path.join(prop_dir, filename))
 
-    if 'videos' in request.files:
-        video_path = rented_prop.video_path
-        # Delete the existing dir
-        if os.path.exists(video_path):
-            shutil.rmtree(video_path)
-        else:
-            pass
-        # Create a new dir with updated videos
-        videos = request.files.getlist('videos')
-        for video in videos:
-            base_dir = f'/home/vagrant/alx/skyspringhomes/media_storage/rent/{rent_type}/videos/'
-            os.makedirs(base_dir, exist_ok=True)
+    # if 'videos' in request.files:
+    #     video_path = rented_prop.video_path
+    #     # Delete the existing dir
+    #     if os.path.exists(video_path):
+    #         shutil.rmtree(video_path)
+    #     else:
+    #         pass
+    #     # Create a new dir with updated videos
+    #     videos = request.files.getlist('videos')
+    #     for video in videos:
+    #         base_dir = f'/home/vagrant/alx/skyspringhomes/media_storage/rent/{rent_type}/videos/'
+    #         os.makedirs(base_dir, exist_ok=True)
 
-            prop_dir = os.path.join(base_dir, rent_id)
-            os.makedirs(prop_dir, exist_ok=True)
+    #         prop_dir = os.path.join(base_dir, rent_id)
+    #         os.makedirs(prop_dir, exist_ok=True)
 
-            filename = video.filename
-            video.save(os.path.join(prop_dir, filename))
+    #         filename = video.filename
+    #         video.save(os.path.join(prop_dir, filename))
 
     storage.save()
     return make_response(jsonify(rented_prop.to_dict()), 200)
@@ -188,17 +187,17 @@ def delete_rent(rent_id):
 
     # Handle deletion of image/videos from file system
     image_path = rented_prop.image_path
-    video_path = rented_prop.video_path
+    # video_path = rented_prop.video_path
 
     if os.path.exists(image_path):
         shutil.rmtree(image_path)
     else:
         pass
 
-    if os.path.exists(video_path):
-        shutil.rmtree(video_path)
-    else:
-        pass
+    # if os.path.exists(video_path):
+    #     shutil.rmtree(video_path)
+    # else:
+    #     pass
 
     # Handle deletion of object from the db
     storage.delete(rented_prop)

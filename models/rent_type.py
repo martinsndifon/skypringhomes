@@ -1,10 +1,8 @@
 #!/usr/bin/python3
 """this module represent all rented properties"""
-from models.base_model import BaseModel, Base
+from models.base_model import Base
 from sqlalchemy.orm import relationship
-from sqlalchemy import Column, String, ForeignKey, Integer
-import sqlalchemy
-import models
+from sqlalchemy import Column, String, Integer
 
 
 class RentType(Base):

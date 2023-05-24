@@ -69,17 +69,17 @@ def post_serviced():
             image.save(os.path.join(prop_dir, filename))
 
     # Acess uploaded videos separately
-    if 'videos' in request.files:
-        videos = request.files.getlist('videos')
-        for video in videos:
-            base_dir = '/home/vagrant/alx/skyspringhomes/media_storage/serviced/videos/'
-            os.makedirs(base_dir, exist_ok=True)
+    # if 'videos' in request.files:
+    #     videos = request.files.getlist('videos')
+    #     for video in videos:
+    #         base_dir = '/home/vagrant/alx/skyspringhomes/media_storage/serviced/videos/'
+    #         os.makedirs(base_dir, exist_ok=True)
 
-            prop_dir = os.path.join(base_dir, prop_id)
-            os.makedirs(prop_dir, exist_ok=True)
+    #         prop_dir = os.path.join(base_dir, prop_id)
+    #         os.makedirs(prop_dir, exist_ok=True)
 
-            filename = video.filename
-            video.save(os.path.join(prop_dir, filename))
+    #         filename = video.filename
+    #         video.save(os.path.join(prop_dir, filename))
 
     serviced_prop.save()
     return make_response(jsonify(serviced_prop.to_dict()), 201)
@@ -123,24 +123,24 @@ def put_serviced(serviced_id):
             filename = image.filename
             image.save(os.path.join(prop_dir, filename))
 
-    if 'videos' in request.files:
-        video_path = serviced_prop.video_path
-        # Delete the existing dir
-        if os.path.exists(video_path):
-            shutil.rmtree(video_path)
-        else:
-            pass
-        # Create a new dir with updated videos
-        videos = request.files.getlist('videos')
-        for video in videos:
-            base_dir = '/home/vagrant/alx/skyspringhomes/media_storage/serviced/videos/'
-            os.makedirs(base_dir, exist_ok=True)
+    # if 'videos' in request.files:
+    #     video_path = serviced_prop.video_path
+    #     # Delete the existing dir
+    #     if os.path.exists(video_path):
+    #         shutil.rmtree(video_path)
+    #     else:
+    #         pass
+    #     # Create a new dir with updated videos
+    #     videos = request.files.getlist('videos')
+    #     for video in videos:
+    #         base_dir = '/home/vagrant/alx/skyspringhomes/media_storage/serviced/videos/'
+    #         os.makedirs(base_dir, exist_ok=True)
 
-            prop_dir = os.path.join(base_dir, serviced_id)
-            os.makedirs(prop_dir, exist_ok=True)
+    #         prop_dir = os.path.join(base_dir, serviced_id)
+    #         os.makedirs(prop_dir, exist_ok=True)
 
-            filename = video.filename
-            video.save(os.path.join(prop_dir, filename))
+    #         filename = video.filename
+    #         video.save(os.path.join(prop_dir, filename))
 
     storage.save()
     return make_response(jsonify(serviced_prop.to_dict()), 200)
@@ -157,17 +157,17 @@ def delete_serviced(serviced_id):
     
     # Handle deletion of image/videos from file system
     image_path = serviced_prop.image_path
-    video_path = serviced_prop.video_path
+    # video_path = serviced_prop.video_path
 
     if os.path.exists(image_path):
         shutil.rmtree(image_path)
     else:
         pass
 
-    if os.path.exists(video_path):
-        shutil.rmtree(video_path)
-    else:
-        pass
+    # if os.path.exists(video_path):
+    #     shutil.rmtree(video_path)
+    # else:
+    #     pass
 
     # Handle deletion of object from the db
     storage.delete(serviced_prop)

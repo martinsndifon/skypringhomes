@@ -1,0 +1,41 @@
+.listing-section {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content:space-between;
+	margin-bottom: 20px;
+  }
+
+  .listing-card {
+	width: 100%;
+	max-width: calc(20% - 10px);
+	background-color: #f1f1f1;
+	padding: 20px;
+	margin-bottom: 10px;
+  }
+
+  .listing-image {
+	width: 100%;
+	height: auto;
+	margin-bottom: 10px;
+  }
+
+  .listing-title {
+	color: #cfc5c5;
+	margin: 3px 0;
+	padding: 3px 0;
+  }
+
+  .listing-price {
+	font-weight: bold;
+	font-size: 25px;
+	color: #cfc5c5;
+	margin: 0;
+	padding: 0;
+  }
+
+  .listing-location,
+  .listing-time {
+	color: #cfc5c5;
+	margin: 3px 0;
+	padding: 3px 0;
+  }

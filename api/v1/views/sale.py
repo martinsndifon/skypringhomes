@@ -68,17 +68,17 @@ def post_sale():
             image.save(os.path.join(prop_dir, filename))
 
     # Access uploaded videos separately
-    if 'videos' in request.files:
-        videos = request.files.getlist('videos')
-        for video in videos:
-            base_dir = '/home/vagrant/alx/skyspringhomes/media_storage/sale/videos/'
-            os.makedirs(base_dir, exist_ok=True)
+    # if 'videos' in request.files:
+    #     videos = request.files.getlist('videos')
+    #     for video in videos:
+    #         base_dir = '/home/vagrant/alx/skyspringhomes/media_storage/sale/videos/'
+    #         os.makedirs(base_dir, exist_ok=True)
 
-            prop_dir = os.path.join(base_dir, prop_id)
-            os.makedirs(prop_dir, exist_ok=True)
+    #         prop_dir = os.path.join(base_dir, prop_id)
+    #         os.makedirs(prop_dir, exist_ok=True)
 
-            filename = video.filename
-            video.save(os.path.join(prop_dir, filename))
+    #         filename = video.filename
+    #         video.save(os.path.join(prop_dir, filename))
 
     sale_prop.save()
     return make_response(jsonify(sale_prop.to_dict()), 201)
@@ -123,24 +123,24 @@ def put_sale(sale_id):
             image.save(os.path.join(prop_dir, filename))
 
 
-    if 'videos' in request.files:
-        video_path = sale_prop.video_path
-        # Delete the existing dir
-        if os.path.exists(video_path):
-            shutil.rmtree(video_path)
-        else:
-            pass
-        # Create a new dir with updated videos
-        videos = request.files.getlist('videos')
-        for video in videos:
-            base_dir = '/home/vagrant/alx/skyspringhomes/media_storage/sale/videos/'
-            os.makedirs(base_dir, exist_ok=True)
+    # if 'videos' in request.files:
+    #     video_path = sale_prop.video_path
+    #     # Delete the existing dir
+    #     if os.path.exists(video_path):
+    #         shutil.rmtree(video_path)
+    #     else:
+    #         pass
+    #     # Create a new dir with updated videos
+    #     videos = request.files.getlist('videos')
+    #     for video in videos:
+    #         base_dir = '/home/vagrant/alx/skyspringhomes/media_storage/sale/videos/'
+    #         os.makedirs(base_dir, exist_ok=True)
 
-            prop_dir = os.path.join(base_dir, sale_id)
-            os.makedirs(prop_dir, exist_ok=True)
+    #         prop_dir = os.path.join(base_dir, sale_id)
+    #         os.makedirs(prop_dir, exist_ok=True)
 
-            filename = video.filename
-            video.save(os.path.join(prop_dir, filename))
+    #         filename = video.filename
+    #         video.save(os.path.join(prop_dir, filename))
 
     storage.save()
     return make_response(jsonify(sale_prop.to_dict()), 200)
@@ -157,17 +157,17 @@ def delete_sale(sale_id):
 
     # Handle deletion of image/videos from file system
     image_path = sale_prop.image_path
-    video_path = sale_prop.video_path
+    # video_path = sale_prop.video_path
 
     if os.path.exists(image_path):
         shutil.rmtree(image_path)
     else:
         pass
 
-    if os.path.exists(video_path):
-        shutil.rmtree(video_path)
-    else:
-        pass
+    # if os.path.exists(video_path):
+    #     shutil.rmtree(video_path)
+    # else:
+    #     pass
 
     # Handle deletion of object from the db
     storage.delete(sale_prop)
