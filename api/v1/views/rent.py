@@ -63,6 +63,10 @@ def post_rent():
     data = request.form
 
     description = data.get('description')
+    title = data.get('title')
+    if not title:
+        abort(400, description="title cannot be null")
+
     location = data.get('location')
     if not location:
         abort(400, description="Location cannot be null")
@@ -76,7 +80,7 @@ def post_rent():
         abort(400, description="Rent_type cannot be null")
 
     rented_prop = Rent(description=description, location=location, price=price,
-                       rent_type=rent_type)
+                       rent_type=rent_type, title=title)
 
     # Handle the saving of media files to local storage
     prop_id = rented_prop.id

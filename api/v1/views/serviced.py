@@ -42,14 +42,15 @@ def get_serviced_prop(serviced_id):
 def post_serviced():
     """Creates a new serviced property in the db"""
 
+    title = request.form.get('title')
     description = request.form.get('description')
     location = request.form.get('location')
     price = request.form.get('price')
     if not price or not location:
-        abort(400, description="Price or location cannot be null")
+        abort(400, description="Price, location and title cannot be null")
 
     serviced_prop = Serviced(description=description, location=location,
-                             price=price)
+                             price=price, title=title)
 
     # Handle the saving of media files
     prop_id = serviced_prop.id

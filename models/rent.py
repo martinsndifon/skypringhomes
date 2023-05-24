@@ -10,6 +10,7 @@ from models.rent_type import RentType
 class Rent(BaseModel, Base):
     """Represents rented listings"""
     __tablename__ = 'rent'
+    title = Column(String(60), nullable=False)
     rent_type = Column(String(60), ForeignKey('renttype.name'), nullable=False)
     price = Column(Integer, default=0)
     description = Column(String(1500), nullable=True)

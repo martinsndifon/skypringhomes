@@ -41,15 +41,15 @@ def get_sale_prop(sale_id):
 @swag_from('documentation/sale/post_sale.yml', methods=['POST'])
 def post_sale():
     """Creates a new sale property in the db"""
-    
+    title = request.form.get('title')
     price = request.form.get('price')
     location = request.form.get('location')
     description = request.form.get('description')
 
-    if not price or not location:
-        abort(400, description="price or location cannot be null")
+    if not price or not location or not title:
+        abort(400, description="price, location and title cannot be null")
 
-    sale_prop = Sale(description=description, location=location, price=price)
+    sale_prop = Sale(description=description, location=location, price=price, title=title)
 
     # Handle the saving of media files
     prop_id = sale_prop.id

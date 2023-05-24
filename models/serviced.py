@@ -10,6 +10,7 @@ import models
 class Serviced(BaseModel, Base):
     """Represents rented listings"""
     __tablename__ = 'serviced'
+    title = Column(String(60), nullable=False)
     price = Column(Integer, default=0)
     description = Column(String(1500), nullable=True)
     location = Column(String(255), nullable=True)
