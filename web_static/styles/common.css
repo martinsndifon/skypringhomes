@@ -56,10 +56,10 @@ body {
 	text-align: left;
 	margin-top: 5px;
 	margin-bottom: 5px;
-	margin-left: 5px;
+	margin-left: 10px;
 }
 
-.button-group .button {
+.button-group .filter-button {
 	display: inline-block;
 	padding: 10px 20px;
 	background-color: #f1f1f1;
@@ -69,10 +69,11 @@ body {
 	outline: none;
 }
 
-.button-group .button:last-child {
+.button-group .filter-button:last-child {
 	margin-right: 0;
  }
 
-.button-group .button:hover {
+.button-group .filter-button:hover {
 	background-color: #ddd;
  }
+

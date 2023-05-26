@@ -1,8 +1,13 @@
-.listing-section {
-	display: flex;
+.section {
+	display: none;
+  }
+
+  .active {
+	display: inline-block;
 	flex-wrap: wrap;
 	justify-content:space-between;
 	margin-bottom: 20px;
+	margin-left: 10px;
   }
 
   .listing-card {
@@ -39,3 +44,90 @@
 	margin: 3px 0;
 	padding: 3px 0;
   }
+/*rent option filter*/
+.filters {
+    background-color: #f1f1f1;
+    height: 55px;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px;
+    display: flex;  
+    align-items: center;
+    position: relative;
+    width: 40%;
+	margin-bottom: 5px;
+}
+
+.filters button {
+    font-size: inherit;
+    background-color: #37b86d;
+    color: #FFFFFF;
+    height:  35px;
+    width: 20%;
+    border: none;
+    border-radius: 4px;
+    position: absolute;
+    right: 30px;
+    /* box-sizing: border-box; */
+}
+.filters button:hover {
+    opacity: 0.9;
+}
+
+.filters .rent-type{
+
+    height: 100%; 
+    width: 30%;
+    position: relative;
+    display: flex;
+    justify-content: center; 
+    flex-direction: column; 
+    box-sizing: border-box;
+}
+
+.rent-type {
+    border-right: 1px solid  #DDDDDD ;
+}
+
+.filters .rent-type h3{
+    font-weight: 200;
+    margin: 2px 20px;
+	font-size: 14px;
+}
+.rent-type h4{
+	font-weight: 100;
+    font-size: 12px;
+    margin: 2px 20px;   
+	/* height: 17px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap; */
+}
+.rent-type	ul{
+	list-style: none;
+	padding-left: 5px;
+	cursor: pointer;
+}
+.popover {
+    display: none;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px solid #DDDDDD;
+    border-radius: 4px;
+    position: absolute;
+    /* box-sizing: border-box; */
+    width: 100%;
+    top: 100%;
+    margin-top: 0;
+}
+
+div:hover > .popover {
+    display: block;
+    cursor: pointer;
+  }
+
+.popover li {
+    margin: 4px 0px;
+}
+
+.rent-checkbox {
+    margin-right: 10px;
+}

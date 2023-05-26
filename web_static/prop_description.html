@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="styles/post_description.css">
+	<link rel="stylesheet" href="styles/header.css">
+
+	<title>Description</title>
+</head>
+<body>
+	<header>
+		<div class="logo"></div>
+		<nav>
+			<ul class="navbar">
+				<li><a href="#">Home</a></li>
+				<li><a href="#">About</a></li>
+				<li><a href="#">Services</a></li>
+				<li><a href="#">Contact</a></li>
+			</ul>
+		</nav>
+	</header>
+	<div class="slideshow-container">
+		<div class="mySlides fade">
+			<div class="numbertext">1 / 4</div>
+			<img src="images/listing1.jpg">
+		  </div>
+		<div class="mySlides fade">
+		  <div class="numbertext">2 / 4</div>
+		  <img src="images/image1.jpg">
+		</div>
+		<div class="mySlides fade">
+		  <div class="numbertext">3 / 4</div>
+		  <img src="images/image2.jpg">
+		</div>
+		<div class="mySlides fade">
+		  <div class="numbertext">4 / 4</div>
+		  <img src="images/image3.jpg">
+		</div>
+		<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+		<a class="next" onclick="plusSlides(1)">&#10095;</a>
+	</div>
+	<div class="full">
+		<h4 class="title">Single family home</h4>
+		<span class="price">&#8358; 5353535</span>
+		<p class="location">Plot 2044 Malvan Iyalla str. Karu</p>
+		<p class="time">Uploaded at 12:34 24-05-2023</p>
+		<h3 class="desc">Description</h3>
+		<p class="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos eius, amet incidunt, quasi inventore, architecto accusantium magnam exercitationem quis dolor qui corporis magni accusamus ex neque repudiandae in labore vel! Provident quos adipisci voluptate, corporis pariatur modi ipsam voluptatibus laboriosam cum eum, cupiditate, excepturi officia ex. Laudantium vero earum sequi excepturi nam laborum id deserunt odio distinctio perspiciatis commodi, esse sunt cum quis fuga veniam similique repellat! Saepe asperiores fugiat, doloribus eaque nobis tempore necessitatibus voluptatem eius sunt molestiae placeat! Iste quam explicabo consequuntur facere perferendis veritatis deleniti qui cum voluptate facilis? Laborum beatae laboriosam quibusdam ipsam, vero exercitationem corrupti.</p>
+		<h3 class="agent">Agent Contact</h3>
+		<h4 class="name">Name: John Stone</h4>
+		<p class="phone">+234 816 440 4546</p>
+	</div>
+	   
+	<script>
+		var slideIndex = 1;
+		showSlides(slideIndex);
+		function plusSlides(n) {
+		  showSlides(slideIndex += n);
+		}
+		function currentSlide(n) {
+		  showSlides(slideIndex = n);
+		}
+		function showSlides(n) {
+		  var i;
+		  var slides = document.getElementsByClassName("mySlides");
+		 
+		  if(n > slides.length) {
+			slideIndex = 1
+		  }
+		  if(n < 1) {
+			slideIndex = slides.length
+		  }
+		  for(i = 0; i < slides.length; i++) {
+			slides[i].style.display = "none";
+		  }
+		  slides[slideIndex - 1].style.display = "block";
+		}
+	</script>
+</body>
+</html>
