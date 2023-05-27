@@ -1,5 +1,5 @@
 nav {
-	background-color: #f1f1f1;
+	background-color: #020f13;
 	text-align: right;
   }
 
@@ -18,11 +18,11 @@ nav {
 	display: block;
 	padding: 0.625rem;
 	text-decoration: none;
-	color: #333;
+	color: #f7f3f3;
   }
 
   ul.navbar li a:hover {
-	background-color: #ddd;
+	background-color: #c44747;
   }
 
   .dropdown:hover .dropdown-menu {
@@ -45,7 +45,7 @@ nav {
 
 .dropdown-menu li a {
   padding: 10px 20px;
-  color: #333;
+  color: #e7e5e5;
 }
 
 .dropdown-menu li:hover {
