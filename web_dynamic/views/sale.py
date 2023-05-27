@@ -13,7 +13,7 @@ import shutil
 
 @app_views.route('/sale', methods=['GET'], strict_slashes=False)
 @swag_from('documentation/sale/get_sale.yml', methods=['GET'])
-def get_sale_props_api():
+def get_sale_props():
     """Retrieves all properties for sale"""
     sale_props = storage.all(Sale).values()
     list_sale = []
@@ -28,7 +28,7 @@ def get_sale_props_api():
 
 @app_views.route('/sale/<sale_id>', methods=['GET'], strict_slashes=False)
 @swag_from('documentation/sale/get_id_sale.yml', methods=['GET'])
-def get_sale_prop_api(sale_id):
+def get_sale_prop(sale_id):
     """Retrieves a single property for sale"""
     sale_prop = storage.get(Sale, sale_id)
     if not sale_prop:
@@ -39,7 +39,7 @@ def get_sale_prop_api(sale_id):
 
 @app_views.route('/sale', methods=['POST'], strict_slashes=False)
 @swag_from('documentation/sale/post_sale.yml', methods=['POST'])
-def post_sale_api():
+def post_sale():
     """Creates a new sale property in the db"""
     title = request.form.get('title')
     price = request.form.get('price')
@@ -58,7 +58,7 @@ def post_sale_api():
     if 'images' in request.files:
         images = request.files.getlist('images')
         for image in images:
-            base_dir = '/home/vagrant/alx/skyspringhomes/web_dynamic/static/media_storage/sale/images/'
+            base_dir = '/home/vagrant/alx/skyspringhomes/media_storage/sale/images/'
             os.makedirs(base_dir, exist_ok=True)
 
             prop_dir = os.path.join(base_dir, prop_id)
@@ -71,7 +71,7 @@ def post_sale_api():
     # if 'videos' in request.files:
     #     videos = request.files.getlist('videos')
     #     for video in videos:
-    #         base_dir = '/home/vagrant/alx/skyspringhomes/web_dynamic/static/media_storage/sale/videos/'
+    #         base_dir = '/home/vagrant/alx/skyspringhomes/media_storage/sale/videos/'
     #         os.makedirs(base_dir, exist_ok=True)
 
     #         prop_dir = os.path.join(base_dir, prop_id)
@@ -86,7 +86,7 @@ def post_sale_api():
 
 @app_views.route('/sale/<sale_id>', methods=['PUT'], strict_slashes=False)
 @swag_from('documentation/sale/put_sale.yml', methods=['PUT'])
-def put_sale_api(sale_id):
+def put_sale(sale_id):
     """Updates a sale property in the db"""
 
     sale_prop = storage.get(Sale, sale_id)
@@ -106,14 +106,14 @@ def put_sale_api(sale_id):
     if 'images' in request.files:
         image_path = sale_prop.image_path
         # Delete the existing dir
-        if os.path.exists('/home/vagrant/alx/skyspringhomes/web_dynamic' + image_path):
-            shutil.rmtree('/home/vagrant/alx/skyspringhomes/web_dynamic' + image_path)
+        if os.path.exists(image_path):
+            shutil.rmtree(image_path)
         else:
             pass
         # Create a new dir with updated images
         images = request.files.getlist('images')
         for image in images:
-            base_dir = '/home/vagrant/alx/skyspringhomes/web_dynamic/static/media_storage/sale/images/'
+            base_dir = '/home/vagrant/alx/skyspringhomes/media_storage/sale/images/'
             os.makedirs(base_dir, exist_ok=True)
 
             prop_dir = os.path.join(base_dir, sale_id)
@@ -126,14 +126,14 @@ def put_sale_api(sale_id):
     # if 'videos' in request.files:
     #     video_path = sale_prop.video_path
     #     # Delete the existing dir
-    #     if os.path.exists('/home/vagrant/alx/skyspringhomes/web_dynamic' + video_path):
-    #         shutil.rmtree('/home/vagrant/alx/skyspringhomes/web_dynamic' + video_path)
+    #     if os.path.exists(video_path):
+    #         shutil.rmtree(video_path)
     #     else:
     #         pass
     #     # Create a new dir with updated videos
     #     videos = request.files.getlist('videos')
     #     for video in videos:
-    #         base_dir = '/home/vagrant/alx/skyspringhomes/web_dynamic/static/media_storage/sale/videos/'
+    #         base_dir = '/home/vagrant/alx/skyspringhomes/media_storage/sale/videos/'
     #         os.makedirs(base_dir, exist_ok=True)
 
     #         prop_dir = os.path.join(base_dir, sale_id)
@@ -148,7 +148,7 @@ def put_sale_api(sale_id):
 
 @app_views.route('/sale/<sale_id>', methods=['DELETE'], strict_slashes=False)
 @swag_from('documentation/sale/delete_sale.yml', methods=['DELETE'])
-def delete_sale_api(sale_id):
+def delete_sale(sale_id):
     """Deletes a sale property from the db"""
     
     sale_prop = storage.get(Sale, sale_id)
@@ -159,14 +159,13 @@ def delete_sale_api(sale_id):
     image_path = sale_prop.image_path
     # video_path = sale_prop.video_path
 
-    
-    if os.path.exists('/home/vagrant/alx/skyspringhomes/web_dynamic' + image_path):
-        shutil.rmtree('/home/vagrant/alx/skyspringhomes/web_dynamic' + image_path)
+    if os.path.exists(image_path):
+        shutil.rmtree(image_path)
     else:
         pass
 
-    # if os.path.exists('/home/vagrant/alx/skyspringhomes/web_dynamic' + video_path):
-        # shutil.rmtree('/home/vagrant/alx/skyspringhomes/web_dynamic' + video_path)
+    # if os.path.exists(video_path):
+    #     shutil.rmtree(video_path)
     # else:
     #     pass
 

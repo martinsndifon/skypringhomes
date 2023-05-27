@@ -13,7 +13,7 @@ import shutil
 
 @app_views.route('/rent', methods=['GET'], strict_slashes=False)
 @swag_from('documentation/rent/get_rent.yml', methods=['GET'])
-def get_rented_props_api():
+def get_rented_props():
     """Retrieves all properties for rent"""
     rented_props = storage.all(Rent).values()
     list_rent = []
@@ -28,7 +28,7 @@ def get_rented_props_api():
 
 @app_views.route('/rent/<rent_id>', methods=['GET'], strict_slashes=False)
 @swag_from('documentation/rent/get_id_rent.yml', methods=['GET'])
-def get_rented_prop_api(rent_id):
+def get_rented_prop(rent_id):
     """Retrieves a single rented property"""
     rented_prop = storage.get(Rent, rent_id)
     if not rented_prop:
@@ -39,7 +39,7 @@ def get_rented_prop_api(rent_id):
 
 @app_views.route('/rent/type/<rent_type>', methods=['GET'], strict_slashes=False)
 @swag_from('documentation/rent/get_rent_type.yml', methods=['GET'])
-def get_rent_api(rent_type):
+def get_rent(rent_type):
     """Retrieves all rented properties of a particular type"""
     typed_props = storage.all(Rent, rent_type)
     if not typed_props:
@@ -57,7 +57,7 @@ def get_rent_api(rent_type):
 
 @app_views.route('/rent', methods=['POST'], strict_slashes=False)
 @swag_from('documentation/rent/post_rent.yml', methods=['POST'])
-def post_rent_api():
+def post_rent():
     """Creates a new rented property in the db"""
     data = request.form
 
@@ -89,7 +89,7 @@ def post_rent_api():
     if 'images' in request.files:
         images = request.files.getlist('images')
         for image in images:
-            base_dir = f'/home/vagrant/alx/skyspringhomes/web_dynamic/static/media_storage/rent/{rent_type}/images/'
+            base_dir = f'/home/vagrant/alx/skyspringhomes/media_storage/rent/{rent_type}/images/'
             os.makedirs(base_dir, exist_ok=True)
 
             prop_dir = os.path.join(base_dir, prop_id)
@@ -102,7 +102,7 @@ def post_rent_api():
     # if 'videos' in request.files:
     #     videos = request.files.getlist('videos')
     #     for video in videos:
-    #         base_dir = f'/home/vagrant/alx/skyspringhomes/web_dynamic/static/media_storage/rent/{rent_type}/videos/'
+    #         base_dir = f'/home/vagrant/alx/skyspringhomes/media_storage/rent/{rent_type}/videos/'
     #         os.makedirs(base_dir, exist_ok=True)
 
     #         prop_dir = os.path.join(base_dir, prop_id)
@@ -117,7 +117,7 @@ def post_rent_api():
 
 @app_views.route('/rent/<rent_id>', methods=['PUT'], strict_slashes=False)
 @swag_from('documentation/rent/put_rent.yml', methods=['PUT'])
-def put_rent_api(rent_id):
+def put_rent(rent_id):
     """Updates a rented property in the db"""
 
     rented_prop = storage.get(Rent, rent_id)
@@ -137,14 +137,14 @@ def put_rent_api(rent_id):
     if 'images' in request.files:
         image_path = rented_prop.image_path
         # Delete the existing dir
-        if os.path.exists('/home/vagrant/alx/skyspringhomes/web_dynamic' + image_path):
-            shutil.rmtree('/home/vagrant/alx/skyspringhomes/web_dynamic' + image_path)
+        if os.path.exists(image_path):
+            shutil.rmtree(image_path)
         else:
             pass
         # Create a new dir with updated images
         images = request.files.getlist('images')
         for image in images:
-            base_dir = f'/home/vagrant/alx/skyspringhomes/web_dynamic/static/media_storage/rent/{rent_type}/images/'
+            base_dir = f'/home/vagrant/alx/skyspringhomes/media_storage/rent/{rent_type}/images/'
             os.makedirs(base_dir, exist_ok=True)
 
             prop_dir = os.path.join(base_dir, rent_id)
@@ -156,14 +156,14 @@ def put_rent_api(rent_id):
     # if 'videos' in request.files:
     #     video_path = rented_prop.video_path
     #     # Delete the existing dir
-    #     if os.path.exists(video_path): remember to update
+    #     if os.path.exists(video_path):
     #         shutil.rmtree(video_path)
     #     else:
     #         pass
     #     # Create a new dir with updated videos
     #     videos = request.files.getlist('videos')
     #     for video in videos:
-    #         base_dir = f'/home/vagrant/alx/skyspringhomes/web_dynamic/static/media_storage/rent/{rent_type}/videos/'
+    #         base_dir = f'/home/vagrant/alx/skyspringhomes/media_storage/rent/{rent_type}/videos/'
     #         os.makedirs(base_dir, exist_ok=True)
 
     #         prop_dir = os.path.join(base_dir, rent_id)
@@ -178,7 +178,7 @@ def put_rent_api(rent_id):
 
 @app_views.route('/rent/<rent_id>', methods=['DELETE'], strict_slashes=False)
 @swag_from('documentation/rent/delete_rent.yml', methods=['DELETE'])
-def delete_rent_api(rent_id):
+def delete_rent(rent_id):
     """Deletes a rented property from the db"""
     
     rented_prop = storage.get(Rent, rent_id)
@@ -189,12 +189,12 @@ def delete_rent_api(rent_id):
     image_path = rented_prop.image_path
     # video_path = rented_prop.video_path
 
-    if os.path.exists('/home/vagrant/alx/skyspringhomes/web_dynamic' + image_path):
-        shutil.rmtree('/home/vagrant/alx/skyspringhomes/web_dynamic' + image_path)
+    if os.path.exists(image_path):
+        shutil.rmtree(image_path)
     else:
         pass
 
-    # if os.path.exists(video_path): remember to update with correct path
+    # if os.path.exists(video_path):
     #     shutil.rmtree(video_path)
     # else:
     #     pass

@@ -35,7 +35,7 @@ def stats():
 
 @app_views.route('/properties', methods=['GET'], strict_slashes=False)
 @swag_from('documentation/index/get_properties.yml', methods=['GET'])
-def properties():
+def properties_api():
     """Returns the list of all properties in the database"""
     all_props = []
     rented_prop = storage.all(Rent).values()

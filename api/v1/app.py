@@ -13,13 +13,13 @@ app.register_blueprint(app_views)
 cors = CORS(app, resources={r"/api/v1/*": {"origins": "*"}})
 
 @app.teardown_appcontext
-def close_db(error):
+def close_db_api(error):
     """close the db storage"""
     storage.close()
 
 
 @app.errorhandler(404)
-def not_found(error):
+def not_found_api(error):
     """handle 404 error"""
     return make_response(jsonify({'error': 'Not found'}), 404)
 

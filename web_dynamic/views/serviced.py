@@ -13,7 +13,7 @@ import shutil
 
 @app_views.route('/service_apartments', methods=['GET'], strict_slashes=False)
 @swag_from('documentation/serviced/get_serviced.yml', methods=['GET'])
-def get_serviced_props_api():
+def get_serviced_props():
     """Retrieves all service apartments"""
     serviced_props = storage.all(Serviced).values()
     list_serviced = []
@@ -28,7 +28,7 @@ def get_serviced_props_api():
 
 @app_views.route('/service_apartments/<serviced_id>', methods=['GET'], strict_slashes=False)
 @swag_from('documentation/serviced/get_id_serviced.yml', methods=['GET'])
-def get_serviced_prop_api(serviced_id):
+def get_serviced_prop(serviced_id):
     """Retrieves a single serviced property"""
     serviced_prop = storage.get(Serviced, serviced_id)
     if not serviced_prop:
@@ -39,7 +39,7 @@ def get_serviced_prop_api(serviced_id):
 
 @app_views.route('/service_apartments', methods=['POST'], strict_slashes=False)
 @swag_from('documentation/serviced/post_serviced.yml', methods=['POST'])
-def post_serviced_api():
+def post_serviced():
     """Creates a new serviced property in the db"""
 
     title = request.form.get('title')
@@ -59,7 +59,7 @@ def post_serviced_api():
     if 'images' in request.files:
         images = request.files.getlist('images')
         for image in images:
-            base_dir = '/home/vagrant/alx/skyspringhomes/web_dynamic/static/media_storage/serviced/images/'
+            base_dir = '/home/vagrant/alx/skyspringhomes/media_storage/serviced/images/'
             os.makedirs(base_dir, exist_ok=True)
 
             prop_dir = os.path.join(base_dir, prop_id)
@@ -87,7 +87,7 @@ def post_serviced_api():
 
 @app_views.route('/service_apartments/<serviced_id>', methods=['PUT'], strict_slashes=False)
 @swag_from('documentation/serviced/put_serviced.yml', methods=['PUT'])
-def put_serviced_api(serviced_id):
+def put_serviced(serviced_id):
     """Updates a serviced property in the db"""
 
     serviced_prop = storage.get(Serviced, serviced_id)
@@ -107,14 +107,14 @@ def put_serviced_api(serviced_id):
     if 'images' in request.files:
         image_path = serviced_prop.image_path
         # Delete the existing dir
-        if os.path.exists('/home/vagrant/alx/skyspringhomes/web_dynamic' + image_path):
-            shutil.rmtree('/home/vagrant/alx/skyspringhomes/web_dynamic' + image_path)
+        if os.path.exists(image_path):
+            shutil.rmtree(image_path)
         else:
             pass
         # Create a new dir with updated images
         images = request.files.getlist('images')
         for image in images:
-            base_dir = '/home/vagrant/alx/skyspringhomes/web_dynamic/static/media_storage/serviced/images/'
+            base_dir = '/home/vagrant/alx/skyspringhomes/media_storage/serviced/images/'
             os.makedirs(base_dir, exist_ok=True)
 
             prop_dir = os.path.join(base_dir, serviced_id)
@@ -148,7 +148,7 @@ def put_serviced_api(serviced_id):
 
 @app_views.route('/service_apartments/<serviced_id>', methods=['DELETE'], strict_slashes=False)
 @swag_from('documentation/serviced/delete_serviced.yml', methods=['DELETE'])
-def delete_serviced_api(serviced_id):
+def delete_serviced(serviced_id):
     """Deletes a serviced property from the db"""
     
     serviced_prop = storage.get(Serviced, serviced_id)
@@ -159,8 +159,8 @@ def delete_serviced_api(serviced_id):
     image_path = serviced_prop.image_path
     # video_path = serviced_prop.video_path
 
-    if os.path.exists('/home/vagrant/alx/skyspringhomes/web_dynamic' + image_path):
-        shutil.rmtree('/home/vagrant/alx/skyspringhomes/web_dynamic' + image_path)
+    if os.path.exists(image_path):
+        shutil.rmtree(image_path)
     else:
         pass
 

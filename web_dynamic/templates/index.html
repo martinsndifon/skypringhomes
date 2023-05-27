@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link rel="stylesheet" href="/static/styles/header.css?{{ cache_id }}">
+	<link rel="stylesheet" href="/static/styles/common.css?{{ cache_id }}">
+	<link rel="stylesheet" href="/static/styles/footer.css?{{ cache_id }}">
+	<link rel="stylesheet" href="/static/styles/section.css?{{ cache_id }}">
+	<title>skyspringhomes</title>
+</head>
+<body>
+	<header>
+		<div class="logo"></div>
+		<nav>
+			<ul class="navbar">
+				<li><a href="#">Home</a></li>
+				<li><a href="#">About</a></li>
+				<li><a href="#">Services</a></li>
+				<li><a href="#">Contact</a></li>
+			</ul>
+		</nav>
+	</header>
+	<div class="hero-section">
+		<div class="hero-overlay"></div>
+		<div class="hero-content">
+		  <h1 class="hero-title">Welcome to Skyspringhomes</h1>
+		  <p class="hero-description">Providing exceptional properties and services since 2012</p>
+		  <p>Find below our affordable homes, we have a home for everyone...</p>
+		</div>
+	</div>
+	<div class="button-group">
+		<button class="filter-button" data-target="all">All</button>
+		<button class="filter-button" data-target="rent">Rent</button>
+		<button class="filter-button" data-target="sale">Sale</button>
+		<button class="filter-button" data-target="service-apartment">Service Apartments</button>
+	</div>
+	<!-- all section -->
+	<section id="all-section" class="section active">
+		{% for item in all %}
+		<div class="listing-card">
+		  {% set first_image = first_image(item.image_path) %}
+		  <img src="{{ item.image_path }}{{ first_image }}" alt="Listing image" class="listing-image">
+		  <h4 class="listing-title">{{ item.title }}</h4>
+		  <span class="listing-price">&#8358; {{ item.price }}</span>
+		  <p class="listing-location">{{ item.location }}</p>
+		  <p class="listing-time">Uploaded at {{ item.updated_at }}</p>
+		</div>
+		{% endfor %}
+	</section>
+	<!-- rent section -->
+	<section id="rent-section" class="section">
+            <section class="filters">
+                <button>
+                    Filter
+                </button>
+                <div class="rent-type">
+                    <h3>
+                        Rent type &#9662;
+                    </h3>
+                    <h4>
+                        1-bedroom
+                    </h4>
+                    <ul class="popover">
+						<li>
+							<label>
+								<input class="rent-checkbox" type="checkbox">self-contain
+							</label>
+						</li>
+                        <li>
+                            <label>
+								<input class="rent-checkbox" type="checkbox">1-bedroom
+							</label>
+                        </li>
+                        <li>
+							<label>
+								<input class="rent-checkbox" type="checkbox">2-bedroom
+							</label>
+                        </li>
+                        <li>
+                            <label>
+								<input class="rent-checkbox" type="checkbox">3-bedroom
+							</label>
+                        </li>
+                        <li>
+							<label>
+								<input class="rent-checkbox" type="checkbox">4-bedroom
+							</label>
+                        </li>
+						<li>
+							<label>
+								<input class="rent-checkbox" type="checkbox">5-bedroom
+							</label>
+                        </li>
+                    </ul>
+
+                </div>
+            </section>
+		{% for item in rent %}
+		<div class="listing-card">
+		  {% set first_image = first_image(item.image_path) %}
+		  <img src="{{ item.image_path }}{{ first_image }}" alt="rent listing image" class="listing-image">
+		  <h4 class="listing-title">{{ item.title }}</h4>
+		  <span class="listing-price">&#8358; {{ item.price }}</span>
+		  <p class="listing-location">{{ item.location }}</p>
+		  <p class="listing-time">Uploaded at {{ item.updated_at }}</p>
+		</div>
+		{% endfor %}
+	</section>
+	<!-- sale section -->
+	<section id="sale-section" class="section">
+		{% for item in sale %}
+		<div class="listing-card">
+		  {% set first_image = first_image(item.image_path) %}
+		  <img src="{{ item.image_path }}{{ first_image }}" alt="sale listing image" class="listing-image">
+		  <h4 class="listing-title">{{ item.title }}</h4>
+		  <span class="listing-price">&#8358; {{ item.price }}</span>
+		  <p class="listing-location">{{ item.location }}</p>
+		  <p class="listing-time">Uploaded at {{ item.updated_at }}</p>
+		</div>
+		{% endfor %}
+	</section>
+	<!-- service apartment section -->
+	<section id="service-apartment-section" class="section">
+		{% for item in serviced %}
+		<div class="listing-card">
+		  {% set first_image = first_image(item.image_path) %}
+		  <img src="{{ item.image_path }}{{ first_image }}" alt="service apartment listing image" class="listing-image">
+		  <h4 class="listing-title">{{ item.title }}</h4>
+		  <span class="listing-price">&#8358; {{ item.price }}</span>
+		  <p class="listing-location">{{ item.location }}</p>
+		  <p class="listing-time">Uploaded at {{ item.updated_at }}</p>
+		</div>
+		{% endfor %}
+	</section>
+	<script src="/static/script/section.js?{{ cache_id }}"></script>
+</body>
+</html>

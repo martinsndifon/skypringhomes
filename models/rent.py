@@ -19,5 +19,5 @@ class Rent(BaseModel, Base):
     def __init__(self, *args, **kwargs):
         """initializes common attributes from basemodel"""
         super().__init__(*args, **kwargs)
-        self.image_path = "/home/vagrant/alx/skyspringhomes/media_storage/rent/" + self.rent_type + "/images/" + self.id + "/"
-        # self.video_path = "/home/vagrant/alx/skyspringhomes/media_storage/rent/" + self.rent_type + "/videos/" + self.id + "/"
+        self.image_path = "/static/media_storage/rent/" + self.rent_type + "/images/" + self.id + "/"
+        # self.video_path = "/static/media_storage/rent/" + self.rent_type + "/videos/" + self.id + "/"
