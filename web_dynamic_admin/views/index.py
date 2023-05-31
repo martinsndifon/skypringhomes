@@ -1,9 +1,10 @@
 #!/usr/bin/python3
-"""API status module"""
+"""Admin Home page"""
 
 from web_dynamic_admin.views import app_views
 from datetime import datetime
 from flask import jsonify, render_template
+from flask_login import login_required, current_user
 from models import storage
 from models.rent_type import RentType
 from models.rent import Rent
@@ -13,7 +14,8 @@ import uuid
 import os
 
 
-@app_views.route('/admin', methods=['GET'], strict_slashes=False)
+@app_views.route('/', methods=['GET'], strict_slashes=False)
+@login_required
 def properties_admin():
     """Returns the list of all properties in the database"""
     cache_id = uuid.uuid4()

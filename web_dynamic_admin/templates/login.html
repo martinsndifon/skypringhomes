@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Skyspringhomes - Welcome back!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href='/static/styles/login.css'
+    />
+  </head>
+  <body>
+    <div class="left">
+      <nav class="logo">
+        <h2>Skyspringhomes</h2>
+      </nav>
+      <h1>Welcome Back</h1>
+      <p class="center">Welcome back! Please enter your details.</p>
+
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+      	  <div class="center">
+        	{{ messages[0] }}
+    	  </div>
+      {% endif %}
+      {% endwith %}
+      <form class="form" method="post" action="login">
+        <input
+          type="email"
+          name="email"
+          id="myInput"
+          placeholder="Email"
+          required
+          oninput="checkInput()"
+        />
+        <input
+          type="password"
+          name="password"
+          id="myInput"
+          placeholder="Password"
+          required
+          oninput="checkInput()"
+        />
+        <input type="checkbox" name="remember" id="loginbox"/>
+        <label for="loginbox"
+          >Remember me
+	</label>
+        <input type="submit" value="Sign In">
+      </form>
+    </div>
+    <div class="right">
+    </div>
+  </body>
+  <script>
+    function checkInput() {
+      let input = document.getElementById("myInput");
+      if (input.value !== "") {
+        input.classList.add("filled");
+      } else {
+        input.classList.remove("filled");
+      }
+    }
+  </script>
+</html>  

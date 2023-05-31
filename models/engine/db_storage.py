@@ -73,6 +73,15 @@ class DBStorage:
             return None
         return obj
 
+    def get_email(self, cls=None, email=None) -> object:
+        """Return an object given its email and class"""
+        if not cls or not email:
+            return None
+        obj = self.__session.query(cls).where(cls.email == email).first()
+        if not obj:
+            return None
+        return obj
+
     def save(self) -> None:
         """Commit the current db session"""
         try:

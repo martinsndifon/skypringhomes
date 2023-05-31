@@ -14,7 +14,7 @@
 		<div class="logo"></div>
 		<nav>
 			<ul class="navbar">
-				<li><a href="admin">Home</a></li>
+				<li><a href="/">Home</a></li>
 				<li><a href="#">About</a></li>
 				<li><a href="#">Services</a></li>
 				<li><a href="#">Contact</a></li>
@@ -92,7 +92,7 @@
 	<script>
 		$('.edit-button').on('click', function() {
 		  const id = $(this).data('id');
-		  const url = 'http://127.0.0.1:3000/skyspringhomes/mod/sale/' + id;
+		  const url = 'http://127.0.0.1:3000/skyspringhomes/admin/mod/sale/' + id;
 		  window.open(url, '_self');
 		});
 	</script>
