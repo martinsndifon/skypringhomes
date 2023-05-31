@@ -8,16 +8,13 @@ from sqlalchemy import Column, String, DateTime
 import models
 
 Base = declarative_base()
-utc_now = datetime.utcnow()
-wat_tz = pytz.timezone('Africa/Lagos')
-wat_now = utc_now.astimezone(wat_tz)
 
 
 class BaseModel:
     """Implement shared attributes"""
     id = Column(String(60), primary_key=True)
-    created_at = Column(DateTime, default=utc_now)
-    updated_at = Column(DateTime, default=utc_now)
+    created_at = Column(DateTime, default=datetime.utcnow().astimezone(pytz.timezone('Africa/Lagos')))
+    updated_at = Column(DateTime, default=datetime.utcnow().astimezone(pytz.timezone('Africa/Lagos')))
 
     def __init__(self, *args, **kwargs):
         """Initialize the basemodel"""
@@ -27,7 +24,7 @@ class BaseModel:
             if 'id' not in kwargs:
                 self.id = str(uuid.uuid4())
             if 'created_at' not in kwargs:
-                self.created_at = utc_now
+                self.created_at = datetime.utcnow().astimezone(pytz.timezone('Africa/Lagos'))
             else: 
                 if type(self.created_at) is str:
                     time = '%Y-%m-%dT%H:%M:%S.%f'
@@ -36,8 +33,8 @@ class BaseModel:
                 self.updated_at = None
         else:
             self.id = str(uuid.uuid4())
-            self.created_at = utc_now
-            self.updated_at = utc_now
+            self.created_at = datetime.utcnow().astimezone(pytz.timezone('Africa/Lagos'))
+            self.updated_at = datetime.utcnow().astimezone(pytz.timezone('Africa/Lagos'))
 
     def __str__(self):
         """Return string representationof the object"""
@@ -46,7 +43,7 @@ class BaseModel:
 
     def save(self):
         """save the object in the database"""
-        self.updated_at = utc_now
+        self.updated_at = datetime.utcnow().astimezone(pytz.timezone('Africa/Lagos'))
         models.storage.new(self)
         models.storage.save()
 
@@ -62,5 +59,5 @@ class BaseModel:
         if obj.get('_sa_instance_state'):
             del obj['_sa_instance_state']
         obj['created_at'] = obj['created_at'].isoformat()
-        obj['__class__'] = self.__class__.__name__
+        obj['class_name'] = self.__class__.__name__
         return obj

@@ -9,6 +9,7 @@ from models import storage
 from models.rent import Rent
 import os
 import shutil
+import pytz
 
 
 @app_views.route('/rent', methods=['GET'], strict_slashes=False)
@@ -130,7 +131,7 @@ def put_rent_api(rent_id):
     for key, value in data.items():
         if key not in ignore:
             setattr(rented_prop, key, value)
-    setattr(rented_prop, 'updated_at', datetime.utcnow())
+    setattr(rented_prop, 'updated_at', datetime.utcnow().astimezone(pytz.timezone('Africa/Lagos')))
     
     rent_type = rented_prop.rent_type
     # Handle update for images/videos

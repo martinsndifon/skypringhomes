@@ -10,8 +10,8 @@
 	<link rel="stylesheet" href="/static/styles/footer.css?{{ cache_id }}">
 	<link rel="stylesheet" href="/static/styles/section.css?{{ cache_id }}">
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<script type="text/javascript" src="/static/script/description.js?{{ cache_id }}"></script>
-	<script type="text/javascript" src="/static/script/rent_filter.js?{{ cache_id }}"></script>
+        <script type="text/javascript" src="/static/script/description.js?{{ cache_id }}"></script>
+        <script type="text/javascript" src="/static/script/rent_filter.js?{{ cache_id }}"></script>
 	<title>skyspringhomes</title>
 </head>
 <body>
@@ -19,10 +19,17 @@
 		<div class="logo"></div>
 		<nav>
 			<ul class="navbar">
-				<li><a href="home">Home</a></li>
+				<li><a href="admin">Home</a></li>
 				<li><a href="#">About</a></li>
 				<li><a href="#">Services</a></li>
 				<li><a href="#">Contact</a></li>
+				<li class="dropdown">New property &#9662;
+					<ul class="dropdown-menu">
+						<li><a href="rent-post">Rent</a></li>
+						<li><a href="sale-post">Sale</a></li>
+						<li><a href="serviced-post">Service apartment</a></li>
+					</ul>
+				</li>
 			</ul>
 		</nav>
 	</header>
@@ -44,7 +51,7 @@
 	<section id="all-section" class="section active">
 		{% for item in all %}
 		<div class="listing-card" data-id="{{ item.id }}" data-name="{{ item.class_name }}">
-		  {% set first_image = first_image(item.image_path) %}
+		  {% set first_image = first_image_admin(item.image_path) %}
 		  <img src="{{ item.image_path }}{{ first_image }}" alt="Listing image" class="listing-image">
 		  <h4 class="listing-title">{{ item.title }}</h4>
 		  <span class="listing-price">&#8358; {{ item.price }}</span>
@@ -101,7 +108,7 @@
             </section>
 		{% for item in rent %}
 		<div class="listing-card rent-list" data-id="{{ item.id }}" data-name="{{ item.class_name }}" data-type="{{ item.rent_type }}">
-		  {% set first_image = first_image(item.image_path) %}
+		  {% set first_image = first_image_admin(item.image_path) %}
 		  <img src="{{ item.image_path }}{{ first_image }}" alt="rent listing image" class="listing-image">
 		  <h4 class="listing-title">{{ item.title }}</h4>
 		  <span class="listing-price">&#8358; {{ item.price }}</span>
@@ -115,7 +122,7 @@
 	<section id="sale-section" class="section">
 		{% for item in sale %}
 		<div class="listing-card" data-id="{{ item.id }}" data-name="{{ item.class_name }}">
-		  {% set first_image = first_image(item.image_path) %}
+		  {% set first_image = first_image_admin(item.image_path) %}
 		  <img src="{{ item.image_path }}{{ first_image }}" alt="sale listing image" class="listing-image">
 		  <h4 class="listing-title">{{ item.title }}</h4>
 		  <span class="listing-price">&#8358; {{ item.price }}</span>
@@ -128,7 +135,7 @@
 	<section id="service-apartment-section" class="section">
 		{% for item in serviced %}
 		<div class="listing-card" data-id="{{ item.id }}" data-name="{{ item.class_name }}">
-		  {% set first_image = first_image(item.image_path) %}
+		  {% set first_image = first_image_admin(item.image_path) %}
 		  <img src="{{ item.image_path }}{{ first_image }}" alt="service apartment listing image" class="listing-image">
 		  <h4 class="listing-title">{{ item.title }}</h4>
 		  <span class="listing-price">&#8358; {{ item.price }}</span>

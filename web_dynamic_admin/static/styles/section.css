@@ -1,0 +1,141 @@
+.section {
+	display: none;
+  }
+
+  .active {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	margin-bottom: 20px;
+	margin-left: 10px;
+	margin-right: 10px;
+  }
+
+  .listing-card {
+	/* max-width: calc(20% - 10px); */
+	flex-basis: 19.23%;
+	background-color: #f1f1f1;
+	padding: 20px;
+	margin-bottom: 10px;
+	margin-right: 10px;
+  }
+
+  .listing-image {
+	width: 100%;
+	height: auto;
+	margin-bottom: 10px;
+  }
+
+  .listing-title {
+	color: #cfc5c5;
+	margin: 3px 0;
+	padding: 3px 0;
+  }
+
+  .listing-price {
+	font-weight: bold;
+	font-size: 25px;
+	color: #cfc5c5;
+	margin: 0;
+	padding: 0;
+  }
+
+  .listing-location,
+  .listing-time {
+	color: #cfc5c5;
+	margin: 3px 0;
+	padding: 3px 0;
+  }
+
+  #rent-section .filters {
+	display: block;
+}
+
+/*rent option filter*/
+.filters {
+    background-color: #f1f1f1;
+    height: 55px;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px;
+    display: flex;  
+    align-items: center;
+    position: relative;
+    width: 85%;
+	margin-bottom: 5px;
+}
+
+.filters button {
+    font-size: inherit;
+    background-color: #37b86d;
+    color: #FFFFFF;
+    height:  35px;
+    width: 20%;
+    border: none;
+    border-radius: 4px;
+    position: absolute;
+    right: 30px;
+	margin-top: 8px;
+    /* box-sizing: border-box; */
+}
+.filters button:hover {
+    opacity: 0.9;
+}
+
+.filters .rent-type{
+
+    height: 100%; 
+    width: 133px;
+    position: relative;
+    display: flex;
+    justify-content: center; 
+    flex-direction: column; 
+    box-sizing: border-box;
+}
+
+.rent-type {
+    border-right: 1px solid  #DDDDDD ;
+}
+
+.filters .rent-type h3{
+    font-weight: 200;
+    margin: 2px 20px;
+	font-size: 14px;
+}
+.rent-type h4{
+	font-weight: 100;
+    font-size: 12px;
+    margin: 2px 20px;   
+	/* height: 17px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap; */
+}
+.rent-type	ul{
+	list-style: none;
+	padding-left: 5px;
+	cursor: pointer;
+}
+.popover {
+    display: none;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px solid #DDDDDD;
+    border-radius: 4px;
+    position: absolute;
+    /* box-sizing: border-box; */
+    width: 100%;
+    top: 100%;
+    margin-top: 0;
+}
+
+div:hover > .popover {
+    display: block;
+    cursor: pointer;
+  }
+
+.popover li {
+    margin: 4px 0px;
+}
+
+.rent-checkbox {
+    margin-right: 10px;
+}

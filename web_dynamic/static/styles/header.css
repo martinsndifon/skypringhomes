@@ -24,30 +24,3 @@ nav {
   ul.navbar li a:hover {
 	background-color: #ddd;
   }
-
-  .dropdown:hover .dropdown-menu {
-  display: block;
-}
-
-.dropdown-menu {
-  display: none;
-  position: absolute;
-  background-color: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(5px);
-  padding: 0;
-  z-index: 1;
-  text-align: left;
-}
-
-.dropdown-menu li {
-  display: block;
-}
-
-.dropdown-menu li a {
-  padding: 10px 20px;
-  color: #333;
-}
-
-.dropdown-menu li:hover {
-  background-color: #ccc;
-}

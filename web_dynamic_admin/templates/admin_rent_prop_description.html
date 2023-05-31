@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/static/styles/prop_description.css">
+	<link rel="stylesheet" href="/static/styles/header.css">
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<title>Description</title>
+</head>
+<body>
+	<header>
+		<div class="logo"></div>
+		<nav>
+			<ul class="navbar">
+				<li><a href="admin">Home</a></li>
+				<li><a href="#">About</a></li>
+				<li><a href="#">Services</a></li>
+				<li><a href="#">Contact</a></li>
+			</ul>
+		</nav>
+	</header>
+	<div class="admin-buttons">
+		<button data-id="{{ rent.id }}" class="edit-button button">Modify</button>
+		<button data-id="{{ rent.id }}" class="del-button button">Delete</button>
+	</div>
+	<div class="slideshow-container">
+		{% for image_file in image_files %}
+		<div class="mySlides fade">
+			<div class="numbertext">{{ loop.index }} / {{ total_images }}</div>
+			<img src="{{ rent.image_path }}{{ image_file }}">
+		</div>
+		{% endfor %}
+		<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+		<a class="next" onclick="plusSlides(1)">&#10095;</a>
+	</div>
+	<div class="full">
+		<h4 class="title">{{ rent.title }}</h4>
+		<span class="price">&#8358; {{ rent.price }}</span>
+		<p class="location">{{ rent.location }}</p>
+		<p class="time">Uploaded at {{ rent.updated_at }}</p>
+		<h3 class="desc">Description</h3>
+		<p class="description">{{ rent.description }}</p>
+		<h3 class="agent">Agent Contact</h3>
+		<h4 class="name">Name: John Stone</h4>
+		<p class="phone">+234 816 440 4546</p>
+	</div>
+	   
+	<script>
+		let slideIndex = 1;
+		showSlides(slideIndex);
+		function plusSlides(n) {
+		  showSlides(slideIndex += n);
+		}
+		function currentSlide(n) {
+		  showSlides(slideIndex = n);
+		}
+		function showSlides(n) {
+		  let i;
+		  const slides = document.getElementsByClassName("mySlides");
+		 
+		  if(n > slides.length) {
+			slideIndex = 1
+		  }
+		  if(n < 1) {
+			slideIndex = slides.length
+		  }
+		  for(i = 0; i < slides.length; i++) {
+			slides[i].style.display = "none";
+		  }
+		  slides[slideIndex - 1].style.display = "block";
+		}
+	</script>
+	<script>
+		$('.del-button').click(function() {
+    		  const id = $(this).data('id');
+    		  const url = 'http://127.0.0.1:5000/api/v1/rent/' + id;
+    
+    		  $.ajax({
+      		    url: url,
+      		    type: 'DELETE',
+      		    success: function(response) {
+        	      alert('Successful');
+      		    },
+      		    error: function(xhr, status, error) {
+        	      alert('Error: ' + error);
+      		    }
+    		  });
+  		});
+	</script>
+	<script>
+		$('.edit-button').on('click', function() {
+		  const id = $(this).data('id');
+		  const url = 'http://127.0.0.1:3000/skyspringhomes/mod/rent/' + id;
+		  window.open(url, '_self');
+		});
+	</script>
+</body>
+</html>

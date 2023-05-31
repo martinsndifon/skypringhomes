@@ -9,6 +9,7 @@ from models import storage
 from models.sale import Sale
 import os
 import shutil
+import pytz
 
 
 @app_views.route('/sale', methods=['GET'], strict_slashes=False)
@@ -100,7 +101,7 @@ def put_sale_api(sale_id):
     for key, value in data.items():
         if key not in ignore:
             setattr(sale_prop, key, value)
-    setattr(sale_prop, 'updated_at', datetime.utcnow())
+    setattr(sale_prop, 'updated_at', datetime.utcnow().astimezone(pytz.timezone('Africa/Lagos')))
 
     # Handle update for images/videos
     if 'images' in request.files:

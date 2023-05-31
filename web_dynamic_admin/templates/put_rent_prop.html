@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Edit rent property</title>
+	<link rel="stylesheet" href="/static/styles/post_form.css?{{ cache_id }}">
+</head>
+<body>
+	<div class="container">
+		<h1>Modify Rent Property</h1>
+		<form id="my-form" enctype="multipart/form-data" data-id={{ rent.id }}>
+		  <label for="title">Title: (25 characters max)</label>
+		  <input type="text" id="title" name="title" maxlength="25" required value="{{ rent.title }}">
+	
+		  <label for="price">Price:</label>
+		  <input type="number" id="price" name="price" required value="{{ rent.price }}">
+	
+		  <label for="location">Location:</label>
+		  <input type="text" id="location" name="location" required value="{{ rent.location }}">
+	
+		  <label for="description">Description:</label>
+		  <textarea id="description" name="description" rows="5" required>{{ rent.description }}</textarea>
+	
+		  <label for="rent_type">Rent Type:</label>
+		  <select id="rent_type" name="rent_type" required>
+			<option value="" disabled selected>Select Rent Type</option>
+			<option value="self-contain" {% if rent.rent_type == 'self-contain' %} selected {% endif %}>Self Contain</option>
+			<option value="1-bedroom" {% if rent.rent_type == '1-bedroom' %} selected {% endif %}>1 Bedroom</option>
+			<option value="2-bedroom" {% if rent.rent_type == '2-bedroom' %} selected {% endif %}>2 Bedroom</option>
+			<option value="3-bedroom" {% if rent.rent_type == '3-bedroom' %} selected {% endif %}>3 Bedroom</option>
+			<option value="4-bedroom" {% if rent.rent_type == '4-bedroom' %} selected {% endif %}>4 Bedroom</option>
+			<option value="5-bedroom" {% if rent.rent_type == '5-bedroom' %} selected {% endif %}>5 Bedroom</option>
+		  </select>
+	
+		  <div class="file-input">
+			<label for="images">Upload Images (up to 10):</label>
+			<input type="file" id="images" name="images" accept="image/*" multiple required>
+		  </div>
+	
+		  <!-- <div class="file-input">
+			<label for="videos">Upload Video</label>
+			<input type="file" id="videos" name="videos" accept="video/*" multiple>
+		  </div> -->
+	
+		  <button id="submit-btn">Submit</button>
+		</form>
+	  </div>
+	  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	  <script>
+	     $(document).ready(function() {
+  		$('#submit-btn').click(function(e) {
+    		  e.preventDefault(); // Prevent default form submission behavior
+    
+    		  const formData = new FormData($('#my-form')[0]); // Create FormData object with form data
+		  const id = $('#my-form').data('id')
+
+    		  $.ajax({
+      		    url: 'http://127.0.0.1:5000/api/v1/rent/' + id,
+      		    type: 'PUT',
+     		    data: formData,
+      		    contentType: false,
+      		    processData: false,
+      		    success: function(response) {
+        	      alert('Successful');
+        		// Handle success response
+      		    },
+        	    error: function(xhr, status, error) {
+        	      alert('Error: ' + error);
+        		// Handle error response
+      		    }
+    		  });
+  		});
+	      });
+	  </script>	  
+</body>
+</html>

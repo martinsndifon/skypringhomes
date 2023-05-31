@@ -9,6 +9,7 @@ from models import storage
 from models.serviced import Serviced
 import os
 import shutil
+import pytz
 
 
 @app_views.route('/service_apartments', methods=['GET'], strict_slashes=False)
@@ -101,7 +102,7 @@ def put_serviced_api(serviced_id):
     for key, value in data.items():
         if key not in ignore:
             setattr(serviced_prop, key, value)
-    setattr(serviced_prop, 'updated_at', datetime.utcnow())
+    setattr(serviced_prop, 'updated_at', datetime.utcnow().astimezone(pytz.timezone('Africa/Lagos')))
 
     # Handle update for images/videos
     if 'images' in request.files:

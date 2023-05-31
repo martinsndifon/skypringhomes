@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>sale property form</title>
+	<link rel="stylesheet" href="/static/styles/post_form.css?{{ cache_id }}">
+</head>
+<body>
+	<div class="container">
+		<h1>New Sale Property Form</h1>
+		<form id="my-form" enctype="multipart/form-data">
+		  <label for="title">Title: (25 characters max)</label>
+		  <input type="text" id="title" name="title" maxlength="25" required>
+	
+		  <label for="price">Price:</label>
+		  <input type="number" id="price" name="price" required>
+	
+		  <label for="location">Location:</label>
+		  <input type="text" id="location" name="location" required>
+	
+		  <label for="description">Description:</label>
+		  <textarea id="description" name="description" rows="5" required></textarea>
+	
+		  <div class="file-input">
+			<label for="images">Upload Images (up to 10):</label>
+			<input type="file" id="images" name="images" accept="image/*" multiple required>
+		  </div>
+	
+		  <!-- <div class="file-input">
+			<label for="videos">Upload Video</label>
+			<input type="file" id="videos" name="videos" accept="video/*" multiple>
+		  </div> -->
+	
+		  <button id="submit-btn">Submit</button>
+		</form>
+	  </div>
+	  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	  <script>
+             $(document).ready(function() {
+                $('#submit-btn').click(function(e) {
+                  e.preventDefault(); // Prevent default form submission behavior
+
+                  const formData = new FormData($('#my-form')[0]); // Create FormData object with form data
+
+                  $.ajax({
+                    url: 'http://127.0.0.1:5000/api/v1/sale',
+                    type: 'POST',
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    success: function(response) {
+                      alert('Successful');
+                        // Handle success response
+                    },
+                    error: function(xhr, status, error) {
+                      alert('Error: ' + error);
+                        // Handle error response
+                    }
+                  });
+                });
+              });
+          </script>
+</body>
+</html>
