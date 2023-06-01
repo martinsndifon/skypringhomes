@@ -7,12 +7,14 @@ from web_dynamic_admin.views import auth
 from werkzeug.security import check_password_hash
 from models.admin import Admin
 from models import storage
+import uuid
 
 
 @auth.route('/login')
 def login():
     """Handles admin login"""
-    return render_template('login.html')
+    cache_id = uuid.uuid4()
+    return render_template('login.html', cache_id=cache_id)
 
 @auth.route('/login', methods=['POST'])
 def login_post():

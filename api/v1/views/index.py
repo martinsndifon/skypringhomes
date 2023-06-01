@@ -10,6 +10,7 @@ from models.rent_type import RentType
 from models.rent import Rent
 from models.sale import Sale
 from models.serviced import Serviced
+from api.v1.app import requires_auth
 
 
 @app_views.route('/status', methods=['GET'], strict_slashes=False)
@@ -20,6 +21,7 @@ def status():
 
 
 @app_views.route('/stats', methods=['GET'], strict_slashes=False)
+@requires_auth
 @swag_from('documentation/index/get_stats.yml', methods=['GET'])
 def stats():
     """Returns the number of listings for each listing type"""

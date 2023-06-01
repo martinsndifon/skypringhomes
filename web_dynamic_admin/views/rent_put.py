@@ -3,6 +3,7 @@
 
 from web_dynamic_admin.views import app_views
 from flask import render_template, abort
+from flask_login import login_required
 from models import storage
 from models.rent import Rent
 import uuid
@@ -10,6 +11,7 @@ import uuid
 
 
 @app_views.route('/mod/rent/<rent_id>', methods=['GET'], strict_slashes=False)
+@login_required
 def rented_prop_mod(rent_id):
     """Returns the put form for a rented property"""
     cache_id = uuid.uuid4()

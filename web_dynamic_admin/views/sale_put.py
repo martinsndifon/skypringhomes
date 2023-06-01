@@ -3,6 +3,7 @@
 
 from web_dynamic_admin.views import app_views
 from flask import render_template, abort
+from flask_login import login_required
 from models import storage
 from models.sale import Sale
 import uuid
@@ -10,6 +11,7 @@ import uuid
 
 
 @app_views.route('/mod/sale/<sale_id>', methods=['GET'], strict_slashes=False)
+@login_required
 def sale_prop_mod(sale_id):
     """Returns the put form for a sale property"""
     cache_id = uuid.uuid4()

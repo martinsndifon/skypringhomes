@@ -3,6 +3,7 @@
 
 from web_dynamic_admin.views import app_views
 from flask import render_template, abort
+from flask_login import login_required
 from models import storage
 from models.serviced import Serviced
 import uuid
@@ -10,6 +11,7 @@ import os
 
 
 @app_views.route('/service_apartments/<serviced_id>', methods=['GET'], strict_slashes=False)
+@login_required
 def get_serviced_prop_admin(serviced_id):
     """Returns the description page of serviced property"""
     cache_id = uuid.uuid4()

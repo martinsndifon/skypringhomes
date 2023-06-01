@@ -20,14 +20,11 @@
 		<nav>
 			<ul class="navbar">
 				<li><a href="{{ url_for('app_views.properties_admin') }}">Home</a></li>
-				<li><a href="#">About</a></li>
-				<li><a href="#">Services</a></li>
-				<li><a href="#">Contact</a></li>
 				<li class="dropdown">New property &#9662;
 					<ul class="dropdown-menu">
-						<li><a href="admin/rent-post">Rent</a></li>
-						<li><a href="admin/sale-post">Sale</a></li>
-						<li><a href="admin/serviced-post">Service apartment</a></li>
+						<li><a href="{{ url_for('app_views.rent_post') }}">Rent</a></li>
+						<li><a href="{{ url_for('app_views.sale_post') }}">Sale</a></li>
+						<li><a href="{{ url_for('app_views.serviced_post') }}">Service apartment</a></li>
 					</ul>
 				</li>
 				<li><a href="{{ url_for('auth.logout') }}">Logout</a></li>

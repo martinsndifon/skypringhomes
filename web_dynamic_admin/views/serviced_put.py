@@ -3,6 +3,7 @@
 
 from web_dynamic_admin.views import app_views
 from flask import render_template, abort
+from flask_login import login_required
 from models import storage
 from models.serviced import Serviced
 import uuid
@@ -10,6 +11,7 @@ import uuid
 
 
 @app_views.route('/mod/service_apartments/<id>', methods=['GET'], strict_slashes=False)
+@login_required
 def serviced_prop_mod(id):
     """Returns the put form for a service apartments"""
     cache_id = uuid.uuid4()

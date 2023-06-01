@@ -3,12 +3,12 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Skyspringhomes - Welcome back!</title>
+    <title>Skyspringhomes - Admin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
       rel="stylesheet"
       type="text/css"
-      href='/static/styles/login.css'
+      href='/static/styles/login.css?{{ cache_id }}'
     />
   </head>
   <body>
@@ -16,12 +16,12 @@
       <nav class="logo">
         <h2>Skyspringhomes</h2>
       </nav>
-      <h1>Welcome Back</h1>
-      <p class="center">Welcome back! Please enter your details.</p>
+      <h1>Welcome Back!</h1>
+      <p class="center">Please enter your details.</p>
 
       {% with messages = get_flashed_messages() %}
       {% if messages %}
-      	  <div class="center">
+      	  <div class="flash">
         	{{ messages[0] }}
     	  </div>
       {% endif %}

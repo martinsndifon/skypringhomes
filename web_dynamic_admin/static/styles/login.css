@@ -24,7 +24,6 @@ body {
 .logo h2 {
   color: #609966;
   font-size: 22px;
-  text-shadow: 3px 2px #edf1d6;
   font-weight: 900;
   letter-spacing: 2.5px;
 }
@@ -42,6 +41,12 @@ p.center {
   text-align: center;
   font-size: 11px;
   padding: 5px 0;
+}
+.flash {
+  text-align: center;
+  font-size: 13px;
+  padding: 5px 0;
+  color: red;
 }
 .form {
   width: 50%;

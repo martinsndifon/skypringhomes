@@ -2,6 +2,7 @@
 """API rent module"""
 
 from api.v1.views import app_views
+from api.v1.app import requires_auth
 from datetime import datetime
 from flask import jsonify, make_response, request, abort
 from flasgger.utils import swag_from
@@ -28,6 +29,7 @@ def get_rented_props_api():
 
 
 @app_views.route('/rent/<rent_id>', methods=['GET'], strict_slashes=False)
+@requires_auth
 @swag_from('documentation/rent/get_id_rent.yml', methods=['GET'])
 def get_rented_prop_api(rent_id):
     """Retrieves a single rented property"""
@@ -57,6 +59,7 @@ def get_rent_api(rent_type):
     
 
 @app_views.route('/rent', methods=['POST'], strict_slashes=False)
+@requires_auth
 @swag_from('documentation/rent/post_rent.yml', methods=['POST'])
 def post_rent_api():
     """Creates a new rented property in the db"""
@@ -117,6 +120,7 @@ def post_rent_api():
 
 
 @app_views.route('/rent/<rent_id>', methods=['PUT'], strict_slashes=False)
+@requires_auth
 @swag_from('documentation/rent/put_rent.yml', methods=['PUT'])
 def put_rent_api(rent_id):
     """Updates a rented property in the db"""
@@ -178,6 +182,7 @@ def put_rent_api(rent_id):
 
 
 @app_views.route('/rent/<rent_id>', methods=['DELETE'], strict_slashes=False)
+@requires_auth
 @swag_from('documentation/rent/delete_rent.yml', methods=['DELETE'])
 def delete_rent_api(rent_id):
     """Deletes a rented property from the db"""

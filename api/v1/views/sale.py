@@ -2,6 +2,7 @@
 """API sale module"""
 
 from api.v1.views import app_views
+from api.v1.app import requires_auth
 from datetime import datetime
 from flask import jsonify, make_response, request, abort
 from flasgger.utils import swag_from
@@ -28,6 +29,7 @@ def get_sale_props_api():
 
 
 @app_views.route('/sale/<sale_id>', methods=['GET'], strict_slashes=False)
+@requires_auth
 @swag_from('documentation/sale/get_id_sale.yml', methods=['GET'])
 def get_sale_prop_api(sale_id):
     """Retrieves a single property for sale"""
@@ -39,6 +41,7 @@ def get_sale_prop_api(sale_id):
 
 
 @app_views.route('/sale', methods=['POST'], strict_slashes=False)
+@requires_auth
 @swag_from('documentation/sale/post_sale.yml', methods=['POST'])
 def post_sale_api():
     """Creates a new sale property in the db"""
@@ -86,6 +89,7 @@ def post_sale_api():
 
 
 @app_views.route('/sale/<sale_id>', methods=['PUT'], strict_slashes=False)
+@requires_auth
 @swag_from('documentation/sale/put_sale.yml', methods=['PUT'])
 def put_sale_api(sale_id):
     """Updates a sale property in the db"""
@@ -148,6 +152,7 @@ def put_sale_api(sale_id):
 
 
 @app_views.route('/sale/<sale_id>', methods=['DELETE'], strict_slashes=False)
+@requires_auth
 @swag_from('documentation/sale/delete_sale.yml', methods=['DELETE'])
 def delete_sale_api(sale_id):
     """Deletes a sale property from the db"""

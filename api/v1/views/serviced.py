@@ -2,6 +2,7 @@
 """API service apartment module"""
 
 from api.v1.views import app_views
+from api.v1.app import requires_auth
 from datetime import datetime
 from flask import jsonify, make_response, request, abort
 from flasgger.utils import swag_from
@@ -39,6 +40,7 @@ def get_serviced_prop_api(serviced_id):
 
 
 @app_views.route('/service_apartments', methods=['POST'], strict_slashes=False)
+@requires_auth
 @swag_from('documentation/serviced/post_serviced.yml', methods=['POST'])
 def post_serviced_api():
     """Creates a new serviced property in the db"""
@@ -87,6 +89,7 @@ def post_serviced_api():
 
 
 @app_views.route('/service_apartments/<serviced_id>', methods=['PUT'], strict_slashes=False)
+@requires_auth
 @swag_from('documentation/serviced/put_serviced.yml', methods=['PUT'])
 def put_serviced_api(serviced_id):
     """Updates a serviced property in the db"""
@@ -148,6 +151,7 @@ def put_serviced_api(serviced_id):
 
 
 @app_views.route('/service_apartments/<serviced_id>', methods=['DELETE'], strict_slashes=False)
+@requires_auth
 @swag_from('documentation/serviced/delete_serviced.yml', methods=['DELETE'])
 def delete_serviced_api(serviced_id):
     """Deletes a serviced property from the db"""
