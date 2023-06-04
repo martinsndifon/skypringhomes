@@ -10,17 +10,17 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="icon" href="/static/images/icon.png"/>
 
-	<title>Description</title>
+	<title>Service apartment description</title>
 </head>
 <body>
-	<header>
-		<div class="logo"></div>
+	<header class="nav">
+		<div class="logo"><img src="/static/images/logo.png" alt="logo image"></div>
 		<nav>
 			<ul class="navbar">
 				<li><a href="{{ url_for('app_views.properties') }}">Home</a></li>
-				<li><a href="#">About</a></li>
-				<li><a href="#">Services</a></li>
-				<li><a href="#">Contact</a></li>
+				<li><a href="{{ url_for('app_views.about') }}">About</a></li>
+				<li><a href="{{ url_for('app_views.services') }}">Services</a></li>
+				<li><a href="{{ url_for('app_views.contact') }}">Contact</a></li>
 			</ul>
 		</nav>
 	</header>
