@@ -4,11 +4,12 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<link rel="stylesheet" href="/static/styles/header.css?{{ cache_id }}">
 	<link rel="stylesheet" href="/static/styles/common.css?{{ cache_id }}">
 	<link rel="stylesheet" href="/static/styles/footer.css?{{ cache_id }}">
 	<link rel="stylesheet" href="/static/styles/section.css?{{ cache_id }}">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="icon" href="/static/images/icon.png" />
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script type="text/javascript" src="/static/script/description.js?{{ cache_id }}"></script>
 	<script type="text/javascript" src="/static/script/rent_filter.js?{{ cache_id }}"></script>
@@ -19,10 +20,10 @@
 		<div class="logo"></div>
 		<nav>
 			<ul class="navbar">
-				<li><a href="home">Home</a></li>
-				<li><a href="#">About</a></li>
-				<li><a href="#">Services</a></li>
-				<li><a href="#">Contact</a></li>
+				<li><a href="{{ url_for('app_views.properties') }}">Home</a></li>
+				<li><a href="{{ url_for('app_views.about') }}">About</a></li>
+				<li><a href="{{ url_for('app_views.services') }}">Services</a></li>
+				<li><a href="{{ url_for('app_views.contact') }}">Contact</a></li>
 			</ul>
 		</nav>
 	</header>
@@ -47,9 +48,11 @@
 		  {% set first_image = first_image(item.image_path) %}
 		  <img src="{{ item.image_path }}{{ first_image }}" alt="Listing image" class="listing-image">
 		  <h4 class="listing-title">{{ item.title }}</h4>
-		  <span class="listing-price">&#8358; {{ item.price }}</span>
+		  {% set price = price_format_admin(item.price) %}
+		  <span class="listing-price">&#8358; {{ price }}</span>
 		  <p class="listing-location">{{ item.location }}</p>
-		  <p class="listing-time">Uploaded at {{ item.updated_at }}</p>
+		  {% set time = time_format_admin(item.updated_at) %}
+		  <p class="listing-time">Uploaded at {{ time }}</p>
 		</div>
 		{% endfor %}
 	</section>
@@ -104,10 +107,12 @@
 		  {% set first_image = first_image(item.image_path) %}
 		  <img src="{{ item.image_path }}{{ first_image }}" alt="rent listing image" class="listing-image">
 		  <h4 class="listing-title">{{ item.title }}</h4>
-		  <span class="listing-price">&#8358; {{ item.price }}</span>
+		  {% set price = price_format_admin(item.price) %}
+		  <span class="listing-price">&#8358; {{ price }}</span>
 		  <p class="listing-location">{{ item.rent_type }}</p>
 		  <p class="listing-location">{{ item.location }}</p>
-		  <p class="listing-time">Uploaded at {{ item.updated_at }}</p>
+		  {% set time = time_format_admin(item.updated_at) %}
+		  <p class="listing-time">Uploaded at {{ time }}</p>
 		</div>
 		{% endfor %}
 	</section>
@@ -118,9 +123,11 @@
 		  {% set first_image = first_image(item.image_path) %}
 		  <img src="{{ item.image_path }}{{ first_image }}" alt="sale listing image" class="listing-image">
 		  <h4 class="listing-title">{{ item.title }}</h4>
-		  <span class="listing-price">&#8358; {{ item.price }}</span>
+		  {% set price = price_format_admin(item.price) %}
+		  <span class="listing-price">&#8358; {{ price }}</span>
 		  <p class="listing-location">{{ item.location }}</p>
-		  <p class="listing-time">Uploaded at {{ item.updated_at }}</p>
+		  {% set time = time_format_admin(item.updated_at) %}
+		  <p class="listing-time">Uploaded at {{ time }}</p>
 		</div>
 		{% endfor %}
 	</section>
@@ -131,12 +138,17 @@
 		  {% set first_image = first_image(item.image_path) %}
 		  <img src="{{ item.image_path }}{{ first_image }}" alt="service apartment listing image" class="listing-image">
 		  <h4 class="listing-title">{{ item.title }}</h4>
-		  <span class="listing-price">&#8358; {{ item.price }}</span>
+		  {% set price = price_format_admin(item.price) %}
+		  <span class="listing-price">&#8358; {{ price }}</span>
 		  <p class="listing-location">{{ item.location }}</p>
-		  <p class="listing-time">Uploaded at {{ item.updated_at }}</p>
+		  {% set time = time_format_admin(item.updated_at) %}
+		  <p class="listing-time">Uploaded at {{ time }}</p>
 		</div>
 		{% endfor %}
 	</section>
+	
+	{% include 'footer.html' %}
+
 	<script src="/static/script/section.js?{{ cache_id }}"></script>
 </body>
 </html>

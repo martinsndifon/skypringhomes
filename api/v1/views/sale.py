@@ -59,8 +59,8 @@ def post_sale_api():
     prop_id = sale_prop.id
 
     # Access uploaded images separately
-    if 'images' in request.files:
-        images = request.files.getlist('images')
+    images = request.files.getlist('images')
+    if images and any(images):
         for image in images:
             base_dir = '/home/vagrant/alx/skyspringhomes/web_dynamic/static/media_storage/sale/images/'
             os.makedirs(base_dir, exist_ok=True)
@@ -70,6 +70,8 @@ def post_sale_api():
 
             filename = image.filename
             image.save(os.path.join(prop_dir, filename))
+    else:
+        abort(400, description="upload at least one image for the property")
 
     # Access uploaded videos separately
     # if 'videos' in request.files:
@@ -85,7 +87,8 @@ def post_sale_api():
     #         video.save(os.path.join(prop_dir, filename))
 
     sale_prop.save()
-    return make_response(jsonify(sale_prop.to_dict()), 201)
+    print("sale property saved successfully")
+    return make_response(jsonify(sale_prop.to_dict()), 200)
 
 
 @app_views.route('/sale/<sale_id>', methods=['PUT'], strict_slashes=False)
@@ -108,7 +111,9 @@ def put_sale_api(sale_id):
     setattr(sale_prop, 'updated_at', datetime.utcnow().astimezone(pytz.timezone('Africa/Lagos')))
 
     # Handle update for images/videos
-    if 'images' in request.files:
+    images = request.files.getlist('images')
+
+    if images and any(images):
         image_path = sale_prop.image_path
         # Delete the existing dir
         if os.path.exists('/home/vagrant/alx/skyspringhomes/web_dynamic' + image_path):
@@ -116,7 +121,6 @@ def put_sale_api(sale_id):
         else:
             pass
         # Create a new dir with updated images
-        images = request.files.getlist('images')
         for image in images:
             base_dir = '/home/vagrant/alx/skyspringhomes/web_dynamic/static/media_storage/sale/images/'
             os.makedirs(base_dir, exist_ok=True)
@@ -126,6 +130,8 @@ def put_sale_api(sale_id):
 
             filename = image.filename
             image.save(os.path.join(prop_dir, filename))
+    else:
+        pass
 
 
     # if 'videos' in request.files:

@@ -90,8 +90,8 @@ def post_rent_api():
     rent_type = rented_prop.rent_type
 
     # Access uploaded images separately
-    if 'images' in request.files:
-        images = request.files.getlist('images')
+    images = request.files.getlist('images')
+    if images and any(images): # checks if images were actually uploaded
         for image in images:
             base_dir = f'/home/vagrant/alx/skyspringhomes/web_dynamic/static/media_storage/rent/{rent_type}/images/'
             os.makedirs(base_dir, exist_ok=True)
@@ -101,6 +101,8 @@ def post_rent_api():
 
             filename = image.filename
             image.save(os.path.join(prop_dir, filename))
+    else:
+        abort(400, description="Upload at least one image for the property")
 
     # Access uploaded videos separately
     # if 'videos' in request.files:
@@ -116,7 +118,9 @@ def post_rent_api():
     #         video.save(os.path.join(prop_dir, filename))
 
     rented_prop.save()
-    return make_response(jsonify(rented_prop.to_dict()), 201)
+
+    print("rent property saved succesfully")
+    return make_response(jsonify(rented_prop.to_dict()), 200)
 
 
 @app_views.route('/rent/<rent_id>', methods=['PUT'], strict_slashes=False)
@@ -138,8 +142,11 @@ def put_rent_api(rent_id):
     setattr(rented_prop, 'updated_at', datetime.utcnow().astimezone(pytz.timezone('Africa/Lagos')))
     
     rent_type = rented_prop.rent_type
+    
     # Handle update for images/videos
-    if 'images' in request.files:
+    images = request.files.getlist('images')
+    
+    if images and any(images):
         image_path = rented_prop.image_path
         # Delete the existing dir
         if os.path.exists('/home/vagrant/alx/skyspringhomes/web_dynamic' + image_path):
@@ -147,7 +154,6 @@ def put_rent_api(rent_id):
         else:
             pass
         # Create a new dir with updated images
-        images = request.files.getlist('images')
         for image in images:
             base_dir = f'/home/vagrant/alx/skyspringhomes/web_dynamic/static/media_storage/rent/{rent_type}/images/'
             os.makedirs(base_dir, exist_ok=True)
@@ -157,6 +163,8 @@ def put_rent_api(rent_id):
 
             filename = image.filename
             image.save(os.path.join(prop_dir, filename))
+    else:
+        pass
 
     # if 'videos' in request.files:
     #     video_path = rented_prop.video_path

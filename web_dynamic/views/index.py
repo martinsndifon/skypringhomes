@@ -13,7 +13,7 @@ import uuid
 import os
 
 
-@app_views.route('/home', methods=['GET'], strict_slashes=False)
+@app_views.route('/', methods=['GET'], strict_slashes=False)
 def properties():
     """Returns the list of all properties in the database"""
     cache_id = uuid.uuid4()

@@ -6,6 +6,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Edit sale property</title>
 	<link rel="stylesheet" href="/static/styles/post_form.css?{{ cache_id }}">
+	<link rel="icon" href="/static/images/icon.png"/>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
 </head>
 <body>
 	<div class="container">
@@ -36,7 +41,6 @@
 		  <button id="submit-btn">Submit</button>
 		</form>
 	  </div>
-	  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	  <script>
 	     $(document).ready(function() {
   		$('#submit-btn').click(function(e) {
@@ -51,12 +55,17 @@
      		    data: formData,
       		    contentType: false,
       		    processData: false,
+		    headers: {
+    		      'Authorization': 'Basic YWRtaW46bWFydGluc25kaWZvbg=='
+  		   },
       		    success: function(response) {
-        	      alert('Successful');
-        		// Handle success response
+        	      toastr.success('Operation successful');
+		      setTimeout( () => {
+        	      	window.location.href = 'http://127.0.0.1:3000/skyspringhomes/admin';
+		      }, 1000);
       		    },
         	    error: function(xhr, status, error) {
-        	      alert('Error: ' + error);
+        	      toastr.error('Error: ' + error);
         		// Handle error response
       		    }
     		  });

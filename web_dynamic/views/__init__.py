@@ -9,3 +9,4 @@ from web_dynamic.views.index import *
 from web_dynamic.views.rent import *
 from web_dynamic.views.sale import *
 from web_dynamic.views.serviced import *
+from web_dynamic.views.nav import *

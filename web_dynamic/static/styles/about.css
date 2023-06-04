@@ -1,0 +1,17 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,500,300,700);
+
+* {
+	box-sizing: border-box;
+	font-family: Open Sans;
+}
+
+.center {
+	position: relative;
+	display: flex;
+	height: 60vh;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	font-size: 30px;
+	background-color: #c8e8e9;
+}

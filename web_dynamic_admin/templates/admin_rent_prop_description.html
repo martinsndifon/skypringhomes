@@ -6,18 +6,20 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="/static/styles/prop_description.css">
 	<link rel="stylesheet" href="/static/styles/header.css">
+	<link rel="stylesheet" href="/static/styles/footer.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="icon" href="/static/images/icon.png"/>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<title>Description</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 </head>
 <body>
 	<header>
 		<div class="logo"></div>
 		<nav>
 			<ul class="navbar">
-				<li><a href="/">Home</a></li>
-				<li><a href="#">About</a></li>
-				<li><a href="#">Services</a></li>
-				<li><a href="#">Contact</a></li>
+				<li><a href="{{ url_for('app_views.properties_admin') }}">Home</a></li>
 			</ul>
 		</nav>
 	</header>
@@ -37,7 +39,8 @@
 	</div>
 	<div class="full">
 		<h4 class="title">{{ rent.title }}</h4>
-		<span class="price">&#8358; {{ rent.price }}</span>
+		{% set price = price_format_admin(rent.price) %}
+		<span class="price">&#8358; {{ price }}</span>
 		<p class="location">{{ rent.location }}</p>
 		<p class="time">Uploaded at {{ rent.updated_at }}</p>
 		<h3 class="desc">Description</h3>
@@ -46,6 +49,8 @@
 		<h4 class="name">Name: John Stone</h4>
 		<p class="phone">+234 816 440 4546</p>
 	</div>
+
+	{% include 'footer.html' %}
 	   
 	<script>
 		let slideIndex = 1;
@@ -80,11 +85,18 @@
     		  $.ajax({
       		    url: url,
       		    type: 'DELETE',
+		    headers: {
+    		      'Authorization': 'Basic YWRtaW46bWFydGluc25kaWZvbg=='
+  		    },
       		    success: function(response) {
-        	      alert('Successful');
-      		    },
+        	      toastr.success('Operation successful');
+      		      setTimeout(function() {
+      			// Reload the home page
+      			window.location.href = 'http://127.0.0.1:3000/skyspringhomes/admin';
+    		      }, 1000);
+		    },
       		    error: function(xhr, status, error) {
-        	      alert('Error: ' + error);
+        	      toastr.error('Error: ' + error);
       		    }
     		  });
   		});
@@ -92,7 +104,7 @@
 	<script>
 		$('.edit-button').on('click', function() {
 		  const id = $(this).data('id');
-		  const url = 'http://127.0.0.1:3000/skyspringhomes/admi/mod/rent/' + id;
+		  const url = 'http://127.0.0.1:3000/skyspringhomes/admin/mod/rent/' + id;
 		  window.open(url, '_self');
 		});
 	</script>

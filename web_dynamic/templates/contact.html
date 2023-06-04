@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<!-- Created By CodingLab - www.codinglabweb.com -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title> Contact Us </title>
+    <link rel="stylesheet" href="/static/styles/contact.css">
+    <link rel="stylesheet" href="/static/styles/contact-header.css">
+    <link rel="icon" href="/static/images/icon.png"/>
+    <!-- Fontawesome CDN Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+<body>
+	<header>
+		<div class="logo"></div>
+		<nav>
+				<ul class="navbar">
+						<li><a href="{{ url_for('app_views.properties') }}">Home</a></li>
+						<li><a href="{{ url_for('app_views.about') }}">About</a></li>
+						<li><a href="{{ url_for('app_views.services') }}">Services</a></li>
+				</ul>
+		</nav>
+	</header>
+  <div class="container">
+    <div class="content">
+      <div class="left-side">
+        <div class="address details">
+          <i class="fas fa-map-marker-alt"></i>
+          <div class="topic">Address</div>
+          <div class="text-one">Plot 2044 Malvan Iyalla</div>
+          <div class="text-two">Karu, Abuja</div>
+        </div>
+        <div class="phone details">
+          <i class="fas fa-phone-alt"></i>
+          <div class="topic">Phone</div>
+          <div class="text-one">+234 816 440 4546</div>
+          <div class="text-two">+234 000 000 0000</div>
+        </div>
+        <div class="email details">
+          <i class="fas fa-envelope"></i>
+          <div class="topic">Email</div>
+          <div class="text-one">martinsndifon@gmail.com</div>
+          <div class="text-two">info.skyspringhomes@gmail.com</div>
+        </div>
+      </div>
+      <div class="right-side">
+        <div class="topic-text">Send us a message</div>
+        <p>You can use this to get to us or give feedback on a service you received from us, we are glad to hear from you anytime.</p>
+      <form action="#">
+        <div class="input-box">
+          <input type="text" placeholder="Enter your name" required>
+        </div>
+        <div class="input-box">
+          <input type="text" placeholder="Enter your email" required>
+        </div>
+        <div class="input-box message-box">
+          <textarea placeholder="Enter your message" required></textarea>
+        </div>
+        <div class="button">
+          <input type="button" value="Send Now" >
+        </div>
+      </form>
+    </div>
+    </div>
+  </div>
+</body>
+</html>

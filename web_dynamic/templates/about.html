@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/static/styles/about.css">
+	<link rel="stylesheet" href="/static/styles/header.css">
+	<link rel="stylesheet" href="/static/styles/footer.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="icon" href="/static/images/icon.png"/>
+	<title>About</title>
+</head>
+<body>
+	<header>
+		<div class="logo"></div>
+		<nav>
+				<ul class="navbar">
+						<li><a href="{{ url_for('app_views.properties') }}">Home</a></li>
+						<li><a href="{{ url_for('app_views.services') }}">Services</a></li>
+						<li><a href="{{ url_for('app_views.contact') }}">Contact Us</a></li>
+				</ul>
+		</nav>
+</header>
+	<div class="center">
+		<p>Coming Soon</p>
+	</div>
+	
+	{% include 'footer.html' %}
+
+</body>
+</html>

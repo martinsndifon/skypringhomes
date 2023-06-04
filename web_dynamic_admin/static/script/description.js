@@ -19,6 +19,6 @@ $(document).ready(function() {
     const url = 'http://127.0.0.1:3000/skyspringhomes/admin/' + route + '/' + id;
 
     // Open a new page with the constructed URL
-    window.open(url, '_blank');
+    window.open(url, '_self');
   });
 });

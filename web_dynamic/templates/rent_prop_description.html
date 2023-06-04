@@ -6,6 +6,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="/static/styles/prop_description.css">
 	<link rel="stylesheet" href="/static/styles/header.css">
+	<link rel="stylesheet" href="/static/styles/footer.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="icon" href="/static/images/icon.png" />
 
 	<title>Description</title>
 </head>
@@ -14,7 +17,7 @@
 		<div class="logo"></div>
 		<nav>
 			<ul class="navbar">
-				<li><a href="home">Home</a></li>
+				<li><a href="{{ url_for('app_views.properties') }}">Home</a></li>
 				<li><a href="#">About</a></li>
 				<li><a href="#">Services</a></li>
 				<li><a href="#">Contact</a></li>
@@ -33,7 +36,8 @@
 	</div>
 	<div class="full">
 		<h4 class="title">{{ rent.title }}</h4>
-		<span class="price">&#8358; {{ rent.price }}</span>
+		{% set price = price_format_admin(rent.price) %}
+		<span class="price">&#8358; {{ price }}</span>
 		<p class="location">{{ rent.location }}</p>
 		<p class="time">Uploaded at {{ rent.updated_at }}</p>
 		<h3 class="desc">Description</h3>
@@ -42,6 +46,8 @@
 		<h4 class="name">Name: John Stone</h4>
 		<p class="phone">+234 816 440 4546</p>
 	</div>
+
+	{% include 'footer.html' %}
 	   
 	<script>
 		let slideIndex = 1;
