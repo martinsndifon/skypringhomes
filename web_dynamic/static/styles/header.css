@@ -2,7 +2,8 @@
 	display: flex;
   	align-items: center;
   	justify-content: space-between;
-	background-color: #020f13;
+	background-color: #fff;
+	border-bottom: 2px solid #000;
   }
 
   .logo {
@@ -27,12 +28,11 @@
   }
 
   ul.navbar li a {
-	display: block;
 	padding: 0.625rem;
 	text-decoration: none;
-	color: #333;
+	color: #000;
   }
 
   ul.navbar li a:hover {
-	background-color: #ddd;
+	border-bottom: 0.1px solid #CD1818;
   }

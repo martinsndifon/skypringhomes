@@ -5,7 +5,7 @@
   .active {
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: flex-start;
+	justify-content: center;
 	margin-bottom: 20px;
 	margin-left: 10px;
 	margin-right: 10px;
@@ -13,38 +13,60 @@
 
   .listing-card {
 	/* max-width: calc(20% - 10px); */
-	flex-basis: 19.23%;
-	background-color: #f1f1f1;
-	padding: 20px;
-	margin-bottom: 10px;
-	margin-right: 10px;
+	flex-basis: 23%;
+	background-color: #F9FBE7;
+	margin: 10px;
+	border: 0;
+	padding: 0;
+	border-radius: 3px;
+	-webkit-box-shadow: 0 0 3px 0px #000;
+	box-shadow: 0 0 3px 0px #000;
+	position: relative;
   }
+  
+  .listing-card:hover {
+	-webkit-box-shadow: 0 0 5px 0.5px #000;
+	box-shadow: 0 0 5px 0.5px #000;
+}
 
   .listing-image {
 	width: 100%;
-	height: auto;
-	margin-bottom: 10px;
+	height: 60%;
+	object-fit: cover;
+	margin-bottom: 3px;
+	border-radius: 3px 3px 0 0;
+  }
+
+  .class-name {
+	position: absolute;
+  	top: 0;
+	left: 0;
+	z-index: 1;
+	background-color: #000;
+	color: #fff;
+	border-radius: 3px 0 0 0;
+	padding: 3px;
   }
 
   .listing-title {
-	color: #cfc5c5;
-	margin: 3px 0;
-	padding: 3px 0;
+	color: #000;
+	margin: 0;
+	padding: 3px 20px;
   }
 
   .listing-price {
 	font-weight: bold;
 	font-size: 25px;
-	color: #cfc5c5;
+	color: #000;
 	margin: 0;
-	padding: 0;
+	padding: 0 20px;
   }
 
   .listing-location,
   .listing-time {
-	color: #cfc5c5;
-	margin: 3px 0;
-	padding: 3px 0;
+	color: #000;
+	margin: 0;
+	padding: 3px 20px;
   }
 
   #rent-section .filters {
@@ -53,32 +75,37 @@
 
 /*rent option filter*/
 .filters {
-    background-color: #f1f1f1;
+    background-color: #fff;
     height: 55px;
     border: 1px solid #DDDDDD;
-    border-radius: 4px;
+    border-radius: 5px;
     display: flex;  
     align-items: center;
     position: relative;
     width: 85%;
-	margin-bottom: 5px;
+	margin-bottom: 15px;
 }
 
 .filters button {
     font-size: inherit;
-    background-color: #37b86d;
+    background-color: #2B3467;
     color: #FFFFFF;
     height:  35px;
-    width: 20%;
+    width: 10%;
     border: none;
-    border-radius: 4px;
+    border-radius: 30px;
     position: absolute;
     right: 30px;
 	margin-top: 8px;
+	cursor: pointer;
     /* box-sizing: border-box; */
 }
 .filters button:hover {
     opacity: 0.9;
+}
+
+.filters button:active {
+	transform: scale(0.95);
 }
 
 .filters .rent-type{
@@ -97,18 +124,13 @@
 }
 
 .filters .rent-type h3{
-    font-weight: 200;
+    font-weight: 50px;
     margin: 2px 20px;
 	font-size: 14px;
 }
 .rent-type h4{
-	font-weight: 100;
     font-size: 12px;
     margin: 2px 20px;   
-	/* height: 17px;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap; */
 }
 .rent-type	ul{
 	list-style: none;
@@ -121,10 +143,10 @@
     border: 1px solid #DDDDDD;
     border-radius: 4px;
     position: absolute;
-    /* box-sizing: border-box; */
     width: 100%;
     top: 100%;
     margin-top: 0;
+    z-index: 2;
 }
 
 div:hover > .popover {

@@ -20,6 +20,7 @@ def get_rented_prop(rent_id):
     base_dir = '/home/vagrant/alx/skyspringhomes/web_dynamic'
     directory_path = rented_prop.image_path
     image_files =os.listdir(base_dir + directory_path)
+    image_files.sort()
     total_images = len(image_files)
 
     return render_template('rent_prop_description.html',

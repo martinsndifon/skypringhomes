@@ -47,6 +47,24 @@
     		  e.preventDefault(); // Prevent default form submission behavior
     
     		  const formData = new FormData($('#my-form')[0]); // Create FormData object with form data
+
+		  // Perform validation
+                  const title = formData.get('title');
+                  const price = formData.get('price');
+                  const location = formData.get('location');
+                  const description = formData.get('description');
+                  const images = formData.getAll('images');
+
+                  if (!title || !price || !location || !description) {
+                  toastr.error('All forms fields are required.');
+                  return;
+                  }
+
+                  if (images.length === 0 || (images.length === 1 && images[0].name === '')) {
+                  toastr.error('Please upload new images for property.');
+                  return;
+                  }
+
 		  const id = $('#my-form').data('id')
 
     		  $.ajax({

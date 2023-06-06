@@ -42,7 +42,7 @@
 		</div>
 	</div>
 	<div class="button-group">
-		<button class="filter-button" data-target="all">All</button>
+		<button class="filter-button btn-active" data-target="all">All</button>
 		<button class="filter-button" data-target="rent">Rent</button>
 		<button class="filter-button" data-target="sale">Sale</button>
 		<button class="filter-button" data-target="service-apartment">Service Apartments</button>
@@ -53,6 +53,7 @@
 		<div class="listing-card" data-id="{{ item.id }}" data-name="{{ item.class_name }}">
 		  {% set first_image = first_image_admin(item.image_path) %}
 		  <img src="{{ item.image_path }}{{ first_image }}" alt="Listing image" class="listing-image">
+		  <span class="class-name">{{ item.class_name }}</span>
 		  <h4 class="listing-title">{{ item.title }}</h4>
 		  {% set price = price_format_admin(item.price) %}
 		  <span class="listing-price">&#8358; {{ price }}</span>

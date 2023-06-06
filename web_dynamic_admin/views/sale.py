@@ -22,6 +22,7 @@ def get_sale_prop_admin(sale_id):
     base_dir = '/home/vagrant/alx/skyspringhomes/web_dynamic_admin'
     directory_path = sale_prop.image_path
     image_files =os.listdir(base_dir + directory_path)
+    image_files.sort()
     total_images = len(image_files)
 
     return render_template('admin_sale_prop_description.html',

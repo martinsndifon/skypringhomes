@@ -1,17 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;1,400&family=Roboto:wght@400;700&family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400&display=swap');
+
+
 * {
-	box-sizing: border-box
+	box-sizing: border-box;
+	font-family: 'Ubuntu', 'Poppins', 'Roboto', 'sans-serif';
   }
-  body {
-	font-family: Verdana, sans-serif;
-	margin: 0
-  }
+
   .mySlides {
 	display: none
   }
+
   img {
 	vertical-align: middle;
 	width: 100%;
 	max-height: 600px;
+	border-radius: 5px;
   }
  
   .slideshow-container {
@@ -20,6 +23,7 @@
 	margin: auto;
 	max-height: 600px;
 	margin-top: 20px;
+	padding: 10px;
   }
   /* Next & previous buttons */
   .prev,
@@ -39,7 +43,7 @@
   }
   /* Position the "next button" to the right */
   .next {
-	right: 0;
+	right: 10px;
 	border-radius: 3px 0 0 3px;
   }
   /* On hover, add a black background color with a little bit see-through */
@@ -85,7 +89,7 @@
   }
 
   .title {
-	color: #cfc5c5;
+	color: #000;
 	margin: 3px 0;
 	padding: 3px 0;
   }
@@ -93,28 +97,28 @@
   .price {
 	font-weight: bold;
 	font-size: 25px;
-	color: #cfc5c5;
+	color: #000;
 	margin: 0;
 	padding: 0;
   }
 
   .location,
   .time {
-	color: #cfc5c5;
+	color: #000;
 	margin: 3px 0;
 	padding: 3px 0;
   }
   .desc {
 	margin-bottom: 0;
-	color: #cfc5c5;
+	color: #000;
   }
   .description {
-	color: #cfc5c5;
+	color: #000;
 	margin-top: 0;
   }
 
   .agent, .name, .phone {
-	color: #cfc5c5;
+	color: #000;
 	margin: 3px 0;
   }
 
@@ -123,6 +127,8 @@
 	position: relative;
 	margin: auto;
 	margin-top: 20px;
+	padding: 0 15px;
+	margin-bottom: 20px;
   }
 
 
