@@ -9,6 +9,11 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session
 from os import getenv
 import models
+from dotenv import load_dotenv
+
+
+# Load environment variables from .env file
+load_dotenv()
 
 my_models = {
         'rent': Rent,
