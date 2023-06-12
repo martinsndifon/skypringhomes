@@ -39,7 +39,7 @@ CREATE TABLE `admin` (
 
 LOCK TABLES `admin` WRITE;
 /*!40000 ALTER TABLE `admin` DISABLE KEYS */;
-INSERT INTO `admin` VALUES ('edce7c3f-0747-48ad-9107-de0c829ab168','2023-05-31 19:42:49','2023-05-31 19:42:49','martins ndifon','martinsndifon@gmail.com','sha256$a3sU2zYAiiWBmkRO$ed928f9cbffb060efe8ded87fd617b17c61c9ffaec82a6331adb49559d383055');
+INSERT INTO `admin` VALUES ('edce7c3f-0747-48ad-9107-de0c829ab168','2023-05-31 19:42:49','2023-05-31 19:42:49','martins ndifon','martinsndifon@gmail.com','sha256$a3sU2zYAiiWBmkRO$ed928f9cbffb060efe8ded87fd617b17c61c9ffaec82a6331adb49559d383055'),('fa395c4a-0db5-49f4-b9f3-c1e4a7e8062f','2023-06-12 15:38:13','2023-06-12 15:38:13','guest user','guestuser@gmail.com','sha256$yJ5Q5BBM3MydRkzt$39cc384a430c4da9720eb7985821e17cd9bc1b28ce3d93f22f6ad0c69cef05ef');
 /*!40000 ALTER TABLE `admin` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -170,4 +170,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-06-12 14:28:23
+-- Dump completed on 2023-06-12 14:40:18
