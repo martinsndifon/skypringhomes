@@ -1,7 +1,7 @@
 -- prepares a MySQL server for the project
 
-CREATE DATABASE IF NOT EXISTS sky_dev_db;
-CREATE USER IF NOT EXISTS 'sky_dev'@'localhost' IDENTIFIED BY 'sky_dev_pwd';
-GRANT ALL PRIVILEGES ON `sky_dev_db`.* TO 'sky_dev'@'localhost';
-GRANT SELECT ON `performance_schema`.* TO 'sky_dev'@'localhost';
+CREATE DATABASE IF NOT EXISTS your_db_name;
+CREATE USER IF NOT EXISTS 'your_user'@'your_host' IDENTIFIED BY 'your_password';
+GRANT ALL PRIVILEGES ON `your_db_name`.* TO 'your_user'@'your_host';
+GRANT SELECT ON `performance_schema`.* TO 'your_user'@'your_host';
 FLUSH PRIVILEGES;
