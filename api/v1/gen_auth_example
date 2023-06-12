@@ -1,0 +1,53 @@
+# Generate the base64 authentication string with python
+
+import base64
+
+username = 'your_username'
+password = 'your_password'
+
+credentials = f"{username}:{password}"
+b_credentials = base64.b64encode(credentials.encode("utf-8")).decode("utf-8")
+
+print(b_credentials) # will print the api authentication string for use
+
+
+----------------------------------------------------------------------------------------
+
+# Usage
+# Example 1
+curl -X GET -H "Authorization: Basic yourauthenticationstring" http://127.0.0.1:5000/api/v1/status
+
+
+# Example 2 with python
+import requests
+
+url = 'http://127.0.0.1:5000/api/v1/status'
+headers = {'Authorization': 'Basic yourauthenticationstring'}
+
+response = requests.get(url, headers=headers)
+
+print(response.status_code)
+print(response.json())
+
+
+# Example 3 with jquery ajax
+$.ajax({
+    url: 'http://127.0.0.1:5000/api/v1/sale',
+    type: 'POST',
+    data: formData,
+    contentType: false,
+    processData: false,
+    headers: {
+      'Authorization': 'Basic yourauthenticationstring'
+    },
+    success: function(response) {
+      toastr.success('Operation successful');
+      setTimeout( () => {
+        window.location.href = 'http://127.0.0.1:3000/skyspringhomes/admin';
+      }, 1000);
+    },
+    error: function(xhr, status, error) {
+      toastr.error('Error: ' + error);
+    }
+});
+

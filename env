@@ -4,3 +4,5 @@ SKY_MYSQL_PWD=your_pwd
 SKY_MYSQL_HOST=your_host
 SKY_MYSQL_DB=your_db_name
 SKY_ENV=dev_or_test
+ADMIN_USERNAME=name_for_api_authentication
+ADMIN_PASSWORD=password_for_api_authentication

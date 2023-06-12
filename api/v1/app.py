@@ -9,6 +9,7 @@ from flask_cors import CORS
 from flasgger import Swagger
 from flasgger.utils import swag_from
 from functools import wraps
+from os import getenv
 
 
 def create_app():
@@ -51,14 +52,15 @@ def requires_auth(f):
     return decorated
 
 def check_auth(username, password):
-    # in an actual app, please use as environment variables, not plain text
-    return username == 'admin' and password == 'martinsndifon'
+    """Verifies api authentication"""
+    admin_name = getenv('ADMIN_USERNAME')
+    admin_password = getenv('ADMIN_PASSWORD')
+    return username == admin_name and password == admin_password
 
 def authenticate():
     return Response(
         'Permission denied',
         403,
-        #{'WWW-Authenticate': 'Basic realm="Login Required"'}
     )
 
 
