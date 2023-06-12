@@ -13,6 +13,7 @@
 
 </head>
 <body>
+	<h2 class="name">Skyspringhomes</h2>
 	<div class="container">
 		<h1>Modify Rent Property</h1>
 		<form id="my-form" enctype="multipart/form-data" data-id={{ rent.id }}>
@@ -26,7 +27,7 @@
 		  <input type="text" id="location" name="location" required value="{{ rent.location }}">
 	
 		  <label for="description">Description:</label>
-		  <textarea id="description" name="description" rows="5" required>{{ rent.description }}</textarea>
+		  <textarea id="description" name="description" rows="6" required>{{ rent.description }}</textarea>
 	
 		  <label for="rent_type">Rent Type:</label>
 		  <select id="rent_type" name="rent_type" required>

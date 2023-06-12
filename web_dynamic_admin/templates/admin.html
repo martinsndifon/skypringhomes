@@ -29,7 +29,7 @@
 						<li><a href="{{ url_for('app_views.serviced_post') }}">Service apartment</a></li>
 					</ul>
 				</li>
-				<li><a href="{{ url_for('auth.logout') }}">Logout</a></li>
+				<li><a href="{{ url_for('auth.logout') }}">Sign Out</a></li>
 			</ul>
 		</nav>
 	</header>
@@ -38,7 +38,7 @@
 		<div class="hero-content">
 		  <h1 class="hero-title">Welcome to Skyspringhomes</h1>
 		  <p class="hero-description">Providing exceptional properties and services since 2012</p>
-		  <p>Find below our affordable homes, we have a home for everyone...</p>
+		  <p class="hero-description">Find below our affordable homes, we have a home for everyone...</p>
 		</div>
 	</div>
 	<div class="button-group">
@@ -59,7 +59,7 @@
 		  <span class="listing-price">&#8358; {{ price }}</span>
 		  <p class="listing-location">{{ item.location }}</p>
 		  {% set time = time_format_admin(item.updated_at) %}
-		  <p class="listing-time">Uploaded at {{ time }}</p>
+		  <p class="listing-time">Uploaded {{ time }}</p>
 		</div>
 		{% endfor %}
 	</section>
@@ -119,7 +119,7 @@
 		  <p class="listing-location">{{ item.rent_type }}</p>
 		  <p class="listing-location">{{ item.location }}</p>
 		  {% set time = time_format_admin(item.updated_at) %}
-		  <p class="listing-time">Uploaded at {{ time }}</p>
+		  <p class="listing-time">Uploaded {{ time }}</p>
 		</div>
 		{% endfor %}
 	</section>
@@ -134,7 +134,7 @@
 		  <span class="listing-price">&#8358; {{ price }}</span>
 		  <p class="listing-location">{{ item.location }}</p>
 		  {% set time = time_format_admin(item.updated_at) %}
-		  <p class="listing-time">Uploaded at {{ time }}</p>
+		  <p class="listing-time">Uploaded {{ time }}</p>
 		</div>
 		{% endfor %}
 	</section>
@@ -149,7 +149,7 @@
 		  <span class="listing-price">&#8358; {{ price }}</span>
 		  <p class="listing-location">{{ item.location }}</p>
 		  {% set time = time_format_admin(item.updated_at) %}
-		  <p class="listing-time">Uploaded at {{ time }}</p>
+		  <p class="listing-time">Uploaded {{ time }}</p>
 		</div>
 		{% endfor %}
 	</section>

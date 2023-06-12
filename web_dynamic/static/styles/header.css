@@ -36,3 +36,64 @@
   ul.navbar li a:hover {
 	border-bottom: 0.1px solid #CD1818;
   }
+
+  .bars {
+  	display: none;
+  }
+
+  .hidden {
+  	display: none;
+  }
+
+@media screen and (max-width: 480px) {
+    .main-navbar {
+      	display: none;
+      }
+
+    .bars {
+    	display: flex;
+	margin-right: 10px;
+	font-size: 18px;
+	color: #000;
+	background: none;
+	border: none;
+    }
+
+    .hidden.hidden-active {
+    	display: block;
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 400px;
+	width: 115px;
+	background-color: #fff;
+	margin-top: 55px;
+	z-index: 2;
+	border-radius: 5px 0 0 5px
+    }
+
+    .hidden-navbar {
+    	list-style-type: none;
+	padding: 0;
+	margin-left: 10px;
+    }
+
+    .hidden-navbar li {
+    	margin: 10px 0;
+    }
+
+    .hidden-navbar li i {
+    	margin-right: 5px;
+    }
+
+    .hidden-navbar li a {
+    	text-decoration: none;
+	padding: 3px;
+	color: #000;
+    }
+
+    .hidden-navbar li a:hover {
+    	border-bottom: 1px solid #CD1818;
+    }
+
+  }

@@ -2,6 +2,8 @@ Posts a new serviced property.
 ---
 tags:
   - Serviced
+security:
+  - basicAuth: []
 parameters:
   - name: request
     in: body

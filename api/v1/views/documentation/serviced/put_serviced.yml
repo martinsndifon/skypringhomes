@@ -2,6 +2,8 @@ Updates the Serviced property information based on ID
 ---
 tags:
   - Serviced
+security:
+  - basicAuth: []
 parameters:
   - name: serviced_id
     in: path

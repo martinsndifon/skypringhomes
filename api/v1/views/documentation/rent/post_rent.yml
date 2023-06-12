@@ -2,6 +2,8 @@ Posts a new property for rent.
 ---
 tags:
   - Rent
+security:
+  - basicAuth: []
 parameters:
   - name: request
     in: body

@@ -2,6 +2,8 @@ Updates the Rent property information based on ID
 ---
 tags:
   - Rent
+security:
+  - basicAuth: []
 parameters:
   - name: rent_id
     in: path

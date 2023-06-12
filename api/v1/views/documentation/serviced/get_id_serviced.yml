@@ -2,6 +2,8 @@ Gets a specific serviced apartment by ID or defaults to all serviced apartments 
 ---
 tags:
   - Serviced
+security:
+  - basicAuth: []
 parameters:
   - name: serviced_id
     in: path

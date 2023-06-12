@@ -2,6 +2,8 @@ Posts a new sale property.
 ---
 tags:
   - Sale
+security:
+  - basicAuth: []
 parameters:
   - name: request
     in: body

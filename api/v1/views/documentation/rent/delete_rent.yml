@@ -2,6 +2,8 @@ Deletes a Rent property based on the id provided
 ---
 tags:
   - Rent
+security:
+  - basicAuth: []
 parameters:
   - name: rent_id
     in: path

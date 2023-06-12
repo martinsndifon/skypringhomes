@@ -13,6 +13,7 @@
 
 </head>
 <body>
+	<h2 class="name">Skyspringhomes</h2>
 	<div class="container">
 		<h1>Modify Sale Property</h1>
 		<form id="my-form" enctype="multipart/form-data" data-id={{ sale.id }}>
@@ -26,7 +27,7 @@
 		  <input type="text" id="location" name="location" required value="{{ sale.location }}">
 	
 		  <label for="description">Description:</label>
-		  <textarea id="description" name="description" rows="5" required>{{ sale.description }}</textarea>
+		  <textarea id="description" name="description" rows="6" required>{{ sale.description }}</textarea>
 	
 		  <div class="file-input">
 			<label for="images">Upload Images (up to 10):</label>

@@ -2,6 +2,8 @@ Deletes a Sale property based on the id provided
 ---
 tags:
   - Sale
+security:
+  - basicAuth: []
 parameters:
   - name: sale_id
     in: path

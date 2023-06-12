@@ -1,17 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;1,400&family=Roboto:wght@400;700&family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400&display=swap');
+
+* {
+	font-family: 'Poppins', 'Ubuntu', 'Roboto', 'sans-serif';
+}
+
+
+body {
+	background-color: #4E6E81;
+	overflow-x: hidden;
+	color: #fff;
+}
+
+.name {
+	color: #BAD1C2;
+}
+
 .container {
-	max-width: 400px;
 	margin: 0 auto;
 	padding: 20px;
-	background-color: #f1f1f1;
+	background-color: #2E3840;
+	border-radius: 5px;
+	max-width: 500px;
   }
   
   h1 {
 	text-align: center;
+	color: #F9DBBB;
   }
   
   label {
 	display: block;
 	margin-top: 10px;
+	color: #fff;
   }
   
   input[type="text"],
@@ -21,10 +41,15 @@
 	width: 100%;
 	padding: 8px;
 	box-sizing: border-box;
-	border: 1px solid #ccc;
-	border-radius: 4px;
+	border: 1px solid black;
+	border-radius: 5px;
 	margin-top: 5px;
 	margin-bottom: 10px;
+  }
+
+  option {
+  	color: #000;
+	font-weight: 550;
   }
   
   #submit-btn {
@@ -34,7 +59,7 @@
 	border: none;
 	border-radius: 4px;
 	cursor: pointer;
-	width: 100%;
+	width: 20%;
   }
   
   #submit-btn:hover {

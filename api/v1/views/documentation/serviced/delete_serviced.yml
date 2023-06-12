@@ -2,6 +2,8 @@ Deletes a Serviced property based on the id provided
 ---
 tags:
   - Serviced
+security:
+  - basicAuth: []
 parameters:
   - name: serviced_id
     in: path

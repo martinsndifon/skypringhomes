@@ -2,6 +2,8 @@ Gets a specific property for rent by ID or defaults to all rented properties if 
 ---
 tags:
   - Rent
+security:
+  - basicAuth: []
 parameters:
   - name: rent_id
     in: path
