@@ -1,0 +1,11 @@
+# Generate the base64 authentication string with python
+
+import base64
+
+username = 'your_username'
+password = 'your_password'
+
+credentials = f"{username}:{password}"
+b_credentials = base64.b64encode(credentials.encode("utf-8")).decode("utf-8")
+
+print(b_credentials) # will print the api authentication string for use
