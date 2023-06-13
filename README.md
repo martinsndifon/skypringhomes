@@ -82,7 +82,23 @@ cat setup_mysql_dev.sql | mysql -uroot -p
 cat setup.sql | mysql -uroot -p your_db_name
 ```
 
-# How to run the backend
+- Create an admin user
+```bash
+# Edit the create_admin_user.py, provide values for name, email and password
+python3 create_admin_user.py
+# The email and password will be used to login to the admin version of the website
+```
+
+- Configure api Basic Authentication
+```bash
+# Edit the api/v1/gen_auth, provide username and password.
+python3 api/v1/gen_auth
+# The above prints the authorization string for the api.
+# Use the api/v1/gen_auth_example for examples on how to use it.
+# Edit all the files in skyspringhomes/web_dynamic_admin/templates except; 404.html, admin.html, footer.html and login.html to include the authentication string generated.
+```
+
+# Run the backend
 ```bash
 # Install required dependencies from the requirement.txt file
 pip3 install -r requirement.txt
@@ -97,4 +113,4 @@ python3 -m web_dynamic.app
 # Run the admin version of the website
 python3 -m web_dynamic_admin.app
 ```
-Open you browser and navigate to the flask url to view to the development website
+Open your browser and navigate to the flask url to view to the development website
