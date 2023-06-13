@@ -55,7 +55,7 @@ The mvp of the project was completing the major functionality of allowing for se
 
 ```bash
 # Clone the repo
-git clone https://github.com/martinsndifon/skyspringhomes
+git clone https://github.com/martinsndifon/skyspringhomes.git
 # Move into the project directory
 cd skyspringhomes/
 # Copy env template to .env
