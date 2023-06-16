@@ -50,8 +50,19 @@ The mvp of the project was completing the major functionality of allowing for se
 # Backend 
 
 # Requirements
-- MySQL
+- MySQL 8.0.xx
 - Python3.8 upwards
+- MySQLdb
+```bash
+sudo apt-get install python3-dev
+sudo apt-get install libmysqlclient-dev
+sudo apt-get install zlib1g-dev
+# mysqlclient will be installed from the requirement.txt
+```
+- Flasgger
+```bash
+sudo apt-get install -y python3-lxml
+```
 
 ```bash
 # Clone the repo
