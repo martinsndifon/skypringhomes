@@ -49,9 +49,9 @@ p.center {
   color: red;
 }
 .form {
-  width: 50%;
+  max-width: 100%;
   margin: 10px auto;
-  padding: 15px;
+  padding: 30px;
 }
 .message {
   font-size: 12px;
@@ -116,4 +116,14 @@ a {
   background-repeat: no-repeat;
   background-size: cover;
   background-image: url("../images/signin_logo.jpg");
+}
+
+@media (max-width: 800px) {
+    .right {
+    	display: none;
+    }
+
+    .left {
+    	width: 100%;
+    }
 }
