@@ -1,17 +1,62 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,500,300,700);
 
 * {
-	box-sizing: border-box;
-	font-family: Open Sans;
+  box-sizing: border-box;
+  font-family: Open Sans;
 }
 
+/* .center {
+  position: relative;
+  display: flex;
+  height: 60vh;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 30px;
+  background-color: #c8e8e9;
+} */
+
 .center {
-	position: relative;
-	display: flex;
-	height: 60vh;
-	justify-content: center;
-	align-items: center;
-	text-align: center;
-	font-size: 30px;
-	background-color: #c8e8e9;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 20px;
+}
+
+.center p {
+  font-size: 18px;
+  line-height: 1.5;
+  margin: 10px 0;
+}
+
+.center h2 {
+  font-size: 24px;
+  margin: 20px 0;
+}
+
+.center ul {
+  list-style-type: disc;
+  margin-left: 20px;
+}
+
+.center table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.center th,
+.center td {
+  border: 1px solid #ccc;
+  padding: 8px;
+}
+
+.center th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.center a {
+  color: #007bff;
+  text-decoration: none;
 }

@@ -1,32 +1,222 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="/static/styles/about.css">
-	<link rel="stylesheet" href="/static/styles/header.css">
-	<link rel="stylesheet" href="/static/styles/footer.css">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="icon" href="/static/images/icon.png"/>
-	<title>About</title>
-</head>
-<body>
-	<header class="nav">
-		<div class="logo"><img src="/static/images/logo.png" alt="logo image"></div>
-		<nav>
-				<ul class="navbar">
-						<li><a href="{{ url_for('app_views.properties') }}">Home</a></li>
-						<li><a href="{{ url_for('app_views.services') }}">Services</a></li>
-						<li><a href="{{ url_for('app_views.contact') }}">Contact Us</a></li>
-				</ul>
-		</nav>
-</header>
-	<div class="center">
-		<p>Coming Soon</p>
-	</div>
-	
-	{% include 'footer.html' %}
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/styles/about.css" />
+    <link rel="stylesheet" href="../static/styles/header.css" />
+    <link rel="stylesheet" href="../static/styles/footer.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="icon" href="/static/images/icon.png" />
+    <title>About</title>
+  </head>
+  <body>
+    <header class="nav">
+      <div class="logo">
+        <img src="/static/images/logo.png" alt="logo image" />
+      </div>
+      <nav>
+        <ul class="navbar">
+          <li><a href="{{ url_for('app_views.properties') }}">Home</a></li>
+          <li><a href="{{ url_for('app_views.services') }}">Services</a></li>
+          <li><a href="{{ url_for('app_views.contact') }}">Contact Us</a></li>
+        </ul>
+      </nav>
+    </header>
+    <div class="center">
+      <h2>Skyspringhomes</h2>
+      <p>
+        This is a real estate web application for a small real estate company
+      </p>
+      <p>
+        It is a portfolio project to mark the end of foundations in the ALX SE
+        Program
+      </p>
+    </div>
 
-</body>
+    <div class="center">
+      <h2>Goal</h2>
+      <p>
+        The major goal of this project was to further solidify my knowledge of
+        using the technologies listing below in building an application. The
+        application gives the owner of the small real estate company the
+        flexibility of dynamically updatating the websites by creating,
+        modifying or deleting properties/listings as they desire.
+      </p>
+    </div>
+
+    <div class="center">
+      <h2>Future update</h2>
+      <p>
+        The mvp of the project was completing the major functionality of
+        allowing for secure CRUD operations by admin to dynamically update the
+        website. Listing below are other features that will be added either to
+        this version of the build or a totally new version using this version as
+        the base for that build.
+      </p>
+      <ul>
+        <li>
+          Users can signup in two categories; an agent and a client(regular
+          user)
+        </li>
+        <li>
+          Signed in clients will have more functionalities which include but not
+          limited to;
+          <ul>
+            <li>Favoriting a property for easy reference on revisit</li>
+            <li>
+              A messaging section where clients can leave a message for an agent
+            </li>
+          </ul>
+        </li>
+        <li>
+          Signed in agents will also have more functionalities
+          <ul>
+            <li>A messaging section to interact with client messages</li>
+            <li>
+              A section to manage their uploaded properties (Create, modify, or
+              delete)
+            </li>
+          </ul>
+        </li>
+        <li>
+          Location will be improved to contain different states and cities
+        </li>
+        <li>
+          Listings will have a better setup, which will include amenities and
+          other distinguishing factors
+        </li>
+        <li>
+          A robust search feature will be added so users can better filter out
+          properties based on different options
+        </li>
+      </ul>
+    </div>
+
+    <div class="center">
+      <h2>Technologies used</h2>
+      <p>- Backend in python</p>
+      <p>- RestfulApi</p>
+      <p>- MySQL</p>
+      <p>- Sqlalchemy</p>
+      <p>- Flask</p>
+      <p>- JQuery</p>
+      <p>- HTML/CSS/JS</p>
+    </div>
+
+    <div class="center">
+      <h2>API Routes</h2>
+      <table>
+        <tr>
+          <th>Method</th>
+          <th>Route</th>
+          <th>Authentication</th>
+          <th>Description</th>
+        </tr>
+        <tr>
+          <td>GET</td>
+          <td>/api/v1/rent</td>
+          <td>NO</td>
+          <td>Returns all the listings for rent</td>
+        </tr>
+        <tr>
+          <td>GET</td>
+          <td>/api/v1/rent/{id}</td>
+          <td>YES</td>
+          <td>Returns a single rented property</td>
+        </tr>
+        <tr>
+          <td>GET</td>
+          <td>/api/v1/rent/type/{rent_type}</td>
+          <td>NO</td>
+          <td>Returns rented properties of a particular type</td>
+        </tr>
+        <tr>
+          <td>POST</td>
+          <td>/api/v1/rent</td>
+          <td>YES</td>
+          <td>Creates a new property for rent</td>
+        </tr>
+        <tr>
+          <td>PUT</td>
+          <td>/api/v1/rent/{id}</td>
+          <td>YES</td>
+          <td>Updates a rented property with new information</td>
+        </tr>
+        <tr>
+          <td>DELETE</td>
+          <td>/api/v1/rent/{id}</td>
+          <td>YES</td>
+          <td>Deletes a rented property</td>
+        </tr>
+        <tr>
+          <td>GET</td>
+          <td>/api/v1/sale</td>
+          <td>NO</td>
+          <td>Returns all the listings for sale</td>
+        </tr>
+        <tr>
+          <td>GET</td>
+          <td>/api/v1/sale/{id}</td>
+          <td>YES</td>
+          <td>Returns a single sale property</td>
+        </tr>
+        <tr>
+          <td>POST</td>
+          <td>/api/v1/sale</td>
+          <td>YES</td>
+          <td>Creates a new property for sale</td>
+        </tr>
+        <tr>
+          <td>PUT</td>
+          <td>/api/v1/sale/{id}</td>
+          <td>YES</td>
+          <td>Updates a sale property with new information</td>
+        </tr>
+        <tr>
+          <td>DELETE</td>
+          <td>/api/v1/sale/{id}</td>
+          <td>YES</td>
+          <td>Deletes a sale property</td>
+        </tr>
+        <tr>
+          <td>GET</td>
+          <td>/api/v1/service_apartments</td>
+          <td>NO</td>
+          <td>Returns all service apartments listings</td>
+        </tr>
+        <tr>
+          <td>GET</td>
+          <td>/api/v1/service_apartments/{id}</td>
+          <td>YES</td>
+          <td>Returns a single service apartment</td>
+        </tr>
+        <tr>
+          <td>POST</td>
+          <td>/api/v1/service_apartments</td>
+          <td>YES</td>
+          <td>Creates a new service apartment</td>
+        </tr>
+        <tr>
+          <td>PUT</td>
+          <td>/api/v1/service_apartments/{id}</td>
+          <td>YES</td>
+          <td>Updates a service apartments with new information</td>
+        </tr>
+        <tr>
+          <td>DELETE</td>
+          <td>/api/v1/service_apartments/{id}</td>
+          <td>YES</td>
+          <td>Deletes a service apartment</td>
+        </tr>
+        <!-- Add more rows for each route -->
+      </table>
+    </div>
+
+    {% include 'footer.html' %}
+  </body>
 </html>
