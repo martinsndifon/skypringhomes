@@ -1,7 +1,7 @@
 # skyspringhomes
 * This is a real estate web application for a small real estate company
 * Live Version
-   <to be updated>
+   <https://skyspringhomes.martinsndifon.tech>
 ## Goal
 The major goal of this project was to further solidify my knowledge of using the technologies listing below in building an application. The application gives the owner of the small real estate company the flexibility of dynamically updatating the websites by creating, modifying or deleting properties/listings as they desire.
 
